@@ -42,9 +42,8 @@ export const ProductList = (props) => {
           .slice(fourItem && (0, 4))
           .map((data) => {
             return (
-              <Grid item xs={3}>
+              <Grid key={data.no} item xs={3}>
                 <Product
-                  key={data.no}
                   productImage={data.productImage}
                   productName={data.productName}
                   productPrice={data.productPrice}
