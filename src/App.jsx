@@ -7,6 +7,7 @@ import { Home } from "./components/Home";
 import { ProductList } from "./components/ProductList";
 import { ProductDetail } from "./components/ProductDetail";
 import { Topbar } from "./components/Topbar";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           />
           <Route path="/product-detail" element={<ProductDetail />} />
         </Routes>
+        <Footer />
       </Container>
     </Router>
   );
