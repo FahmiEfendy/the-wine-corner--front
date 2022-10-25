@@ -5,7 +5,7 @@ import { productList } from "../seeder/productList";
 import { Product } from "./Product";
 
 export const ProductList = (props) => {
-  const { productType, fourItem = false } = props;
+  const { productType, fourItem = false, recommendation = false } = props;
 
   return (
     <div>
@@ -14,7 +14,7 @@ export const ProductList = (props) => {
           variant="h6"
           style={{ fontWeight: "700", marginTop: "2.5rem" }}
         >
-          {productType}
+          {recommendation ? `Other ${productType} You May Like` : productType}
         </Typography>
         {fourItem && (
           <Button

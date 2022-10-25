@@ -5,13 +5,14 @@ import { Container } from "@mui/material";
 
 import { Home } from "./components/Home";
 import { ProductList } from "./components/ProductList";
-import { Toolbar } from "./components/Toolbar";
+import { ProductDetail } from "./components/ProductDetail";
+import { Topbar } from "./components/Topbar";
 
 function App() {
   return (
     <Router>
       <Container maxWidth="xl">
-        <Toolbar />
+        <Topbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/beer" element={<ProductList productType="Beer" />} />
@@ -33,6 +34,7 @@ function App() {
             path="/white-wine"
             element={<ProductList productType="White Wine" />}
           />
+          <Route path="/product-detail" element={<ProductDetail />} />
         </Routes>
       </Container>
     </Router>

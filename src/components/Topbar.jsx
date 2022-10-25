@@ -14,7 +14,7 @@ const links = {
   },
 };
 
-export const Toolbar = () => {
+export const Topbar = () => {
   return (
     <Box sx={{ display: "flex", backgroundColor: "#AF1515" }}>
       <Link href="/" style={links}>
@@ -44,6 +44,9 @@ export const Toolbar = () => {
         </Link>
         <Link href="/white-wine" style={links}>
           White Wine
+        </Link>
+        <Link href="/product-detail" style={links}>
+          Product Detail
         </Link>
       </Box>
     </Box>
