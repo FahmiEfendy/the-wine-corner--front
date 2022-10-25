@@ -1,24 +1,45 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
+
 import { productList } from "../seeder/productList";
 import { Product } from "./Product";
 
 export const ProductList = (props) => {
-  const { productType } = props;
+  const { productType, fourItem = false } = props;
 
   return (
     <div>
-      <Typography
-        variant="h6"
-        style={{ fontWeight: "700", marginTop: "2.5rem" }}
-      >
-        {productType}
-      </Typography>
-      <Grid container>
+      <Box style={{ display: "flex", marginBottom: ".5rem" }}>
+        <Typography
+          variant="h6"
+          style={{ fontWeight: "700", marginTop: "2.5rem" }}
+        >
+          {productType}
+        </Typography>
+        {fourItem && (
+          <Button
+            size="small"
+            style={{
+              alignSelf: "flex-end",
+              marginLeft: "auto",
+              fontSize: "12px",
+              border: "1px solid #AF1515",
+              height: "2rem",
+              width: "5rem",
+              color: "#AF1515",
+              textTransform: "capitalize",
+            }}
+          >
+            View All
+          </Button>
+        )}
+      </Box>
+      <Grid container spacing={2}>
         {productList
           .filter((data) => {
             return data.productType === productType;
           })
+          .slice(fourItem && (0, 4))
           .map((data) => {
             return (
               <Grid item xs={3}>

@@ -10,7 +10,6 @@ export const Product = (props) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        margin: ".5rem",
         padding: "1rem",
       }}
     >

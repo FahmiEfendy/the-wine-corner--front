@@ -1,57 +1,51 @@
 import React from "react";
 import { Box, Link } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 
 import TheWineCornerLogo from "../assets/The Wine Corner Logo.svg";
 import { SearchBar } from "./SearchBar";
 
-const useStyles = makeStyles(() => ({
-  link: {
-    textDecoration: "none",
-    color: "#FFFFFF",
-    fontSize: "20px",
-    margin: "0 1rem",
-    "&:hover": {
-      borderBottom: "1px solid white",
-    },
+const links = {
+  textDecoration: "none",
+  color: "#FFFFFF",
+  fontSize: "20px",
+  margin: "0 1rem",
+  "&:hover": {
+    borderBottom: "1px solid white",
   },
-}));
+};
 
-export default function Toolbar() {
-  const classes = useStyles();
-
+export const Toolbar = () => {
   return (
     <Box sx={{ display: "flex", backgroundColor: "#AF1515" }}>
-      <img src={TheWineCornerLogo} alt="The Wine Corner Logo" />
+      <Link href="/" style={links}>
+        <img src={TheWineCornerLogo} alt="The Wine Corner Logo" />
+      </Link>
       <SearchBar />
       <Box
         style={{ display: "flex", alignItems: "center", marginLeft: "2rem" }}
       >
-        <Link href="#" className={classes.link}>
+        <Link href="/beer" style={links}>
           Beer
         </Link>
-        <Link href="#" className={classes.link}>
-          Gin
-        </Link>
-        <Link href="#" className={classes.link}>
+        <Link href="/other" style={links}>
           Other
         </Link>
-        <Link href="#" className={classes.link}>
+        <Link href="/red-wine" style={links}>
           Red Wine
         </Link>
-        <Link href="#" className={classes.link}>
+        <Link href="/rose-wine" style={links}>
           Rose Wine
         </Link>
-        <Link href="#" className={classes.link}>
+        <Link href="/soju" style={links}>
           Soju
         </Link>
-        <Link href="#" className={classes.link}>
+        <Link href="/whisky" style={links}>
           Whisky
         </Link>
-        <Link href="#" className={classes.link}>
+        <Link href="/white-wine" style={links}>
           White Wine
         </Link>
       </Box>
     </Box>
   );
-}
+};
