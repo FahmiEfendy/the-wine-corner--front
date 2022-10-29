@@ -8,6 +8,7 @@ import { ProductList } from "./components/ProductList";
 import { ProductDetail } from "./components/ProductDetail";
 import { Topbar } from "./components/Topbar";
 import { Footer } from "./components/Footer";
+import { productList } from "./seeder/productList";
 
 function App() {
   return (
@@ -16,25 +17,15 @@ function App() {
         <Topbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/beer" element={<ProductList productType="Beer" />} />
-          <Route path="/other" element={<ProductList productType="Other" />} />
-          <Route
-            path="/red-wine"
-            element={<ProductList productType="Red Wine" />}
-          />
-          <Route
-            path="/rose-wine"
-            element={<ProductList productType="Rose Wine" />}
-          />
-          <Route path="/soju" element={<ProductList productType="Soju" />} />
-          <Route
-            path="/whisky"
-            element={<ProductList productType="Whisky" />}
-          />
-          <Route
-            path="/white-wine"
-            element={<ProductList productType="White Wine" />}
-          />
+          {productList.map((data, index) => {
+            return (
+              <Route
+                key={data.data[index]}
+                path={`/${data.productPath}`}
+                element={<ProductList productType={data.productType} />}
+              />
+            );
+          })}
           <Route path="/product-detail" element={<ProductDetail />} />
         </Routes>
         <Footer />

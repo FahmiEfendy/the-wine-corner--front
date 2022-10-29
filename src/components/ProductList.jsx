@@ -39,18 +39,21 @@ export const ProductList = (props) => {
           .filter((data) => {
             return data.productType === productType;
           })
-          .slice(fourItem && (0, 4))
-          .map((data) => {
-            return (
-              <Grid key={data.no} item xs={3}>
-                <Product
-                  productImage={data.productImage}
-                  productName={data.productName}
-                  productPrice={data.productPrice}
-                />
-              </Grid>
-            );
-          })}
+          .map((data) =>
+            data.data.slice(fourItem && (0, 4)).map((data) => {
+              return (
+                <Grid key={data.no} item xs={3}>
+                  <Product
+                    productId={data.no}
+                    productImage={data.productImage}
+                    productName={data.productName}
+                    productPrice={data.productPrice}
+                    productType={productType}
+                  />
+                </Grid>
+              );
+            })
+          )}
       </Grid>
     </div>
   );

@@ -5,6 +5,8 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import { ProductList } from "./ProductList";
 
 export const ProductDetail = () => {
+  const discountedProductPrice = null;
+
   return (
     <>
       <Box style={{ display: "flex", marginTop: "5rem" }}>
@@ -14,12 +16,25 @@ export const ProductDetail = () => {
           style={{ objectFit: "contain", width: "40%", height: "500px" }}
         />
         <Box style={{ marginTop: "2.5rem" }}>
-          <Typography variant="h4" fontWeight={700}>
+          <Typography variant="h3" fontWeight={700}>
             Product Name
           </Typography>
-          <Typography variant="h5" style={{ margin: "1rem 0 2rem 0" }}>
-            Rp105.000
-          </Typography>
+          <Box sx={{ display: "flex", margin: "1rem 0 2rem 0" }}>
+            <Typography
+              variant="h4"
+              style={
+                discountedProductPrice && {
+                  color: "red",
+                  textDecoration: "line-through",
+                }
+              }
+            >
+              Rp105.000
+            </Typography>
+            <Typography variant="h4" style={{ marginLeft: "1rem" }}>
+              {discountedProductPrice}
+            </Typography>
+          </Box>
           <Box>
             <Button
               startIcon={<EmailIcon />}
