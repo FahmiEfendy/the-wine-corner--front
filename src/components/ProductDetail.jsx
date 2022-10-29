@@ -5,7 +5,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import { ProductList } from "./ProductList";
 
 export const ProductDetail = () => {
-  const discountedProductPrice = null;
+  const discountedProductPrice = "Rp100.000";
 
   return (
     <>

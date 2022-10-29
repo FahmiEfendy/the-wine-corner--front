@@ -20,7 +20,7 @@ function App() {
           {productList.map((data, index) => {
             return (
               <Route
-                key={data.data[index]}
+                key={index}
                 path={`/${data.productPath}`}
                 element={<ProductList productType={data.productType} />}
               />
