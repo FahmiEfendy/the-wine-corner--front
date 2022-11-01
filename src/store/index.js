@@ -1,11 +1,12 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const productInitialState = {
+  productPath: "",
+  productType: "",
   productId: null,
   productName: "",
   productPrice: "",
   productImage: "",
-  productPath: "",
 };
 
 const productSlice = createSlice({
@@ -13,11 +14,12 @@ const productSlice = createSlice({
   initialState: productInitialState,
   reducers: {
     productDetail: (state, actions) => {
+      state.productPath = actions.payload.productPath;
+      state.productType = actions.payload.productType;
       state.productId = actions.payload.productId;
       state.productName = actions.payload.productName;
       state.productPrice = actions.payload.productPrice;
       state.productImage = actions.payload.productImage;
-      state.productPath = actions.payload.productPath;
     },
   },
 });

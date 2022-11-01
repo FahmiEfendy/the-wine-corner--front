@@ -12,13 +12,14 @@ export const ProductDetail = () => {
   const productName = useSelector((state) => state.productName);
   const productPrice = useSelector((state) => state.productPrice);
   const productImage = useSelector((state) => state.productImage);
+  const productType = useSelector((state) => state.productType);
 
   return (
     <>
       <Box style={{ display: "flex", marginTop: "5rem" }}>
         <img
           src={productImage}
-          alt=""
+          alt={productName}
           style={{ objectFit: "contain", width: "40%", height: "500px" }}
         />
         <Box style={{ marginTop: "2.5rem" }}>
@@ -70,7 +71,11 @@ export const ProductDetail = () => {
           </Box>
         </Box>
       </Box>
-      <ProductList productType="Soju" fourItem={true} recommendation={true} />
+      <ProductList
+        productType={productType}
+        fourItem={true}
+        recommendation={true}
+      />
     </>
   );
 };

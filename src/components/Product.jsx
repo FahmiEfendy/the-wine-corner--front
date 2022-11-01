@@ -6,8 +6,14 @@ import { Box, Button, Paper, Typography } from "@mui/material";
 import { productActions } from "../store";
 
 export const Product = (props) => {
-  const { productImage, productName, productPrice, productId, productPath } =
-    props;
+  const {
+    productImage,
+    productName,
+    productPrice,
+    productId,
+    productPath,
+    productType,
+  } = props;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,6 +26,7 @@ export const Product = (props) => {
         productPrice,
         productImage,
         productPath,
+        productType,
       })
     );
     navigate(`${productPath}/${productName}`);

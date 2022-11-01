@@ -7,10 +7,10 @@ import { Product } from "./Product";
 
 export const ProductList = (props) => {
   const {
-    productType,
     fourItem = false,
     recommendation = false,
     viewAllButton = false,
+    productType,
     productPath,
   } = props;
 
