@@ -12,7 +12,8 @@ export const Home = () => {
             key={index}
             productType={data.productType}
             productPath={data.productPath}
-            fourItem={true}
+            fourItem={data.data.length >= 4 && true}
+            viewAllButton={data.data.length >= 4 && true}
           />
         );
       })}

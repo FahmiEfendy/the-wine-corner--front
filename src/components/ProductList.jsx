@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import { productList } from "../seeder/productList";
 import { Product } from "./Product";
@@ -9,8 +10,15 @@ export const ProductList = (props) => {
     productType,
     fourItem = false,
     recommendation = false,
+    viewAllButton = false,
     productPath,
   } = props;
+
+  const navigate = useNavigate();
+
+  const viewAllHandler = () => {
+    navigate(`${productPath}`);
+  };
 
   return (
     <div>
@@ -21,7 +29,7 @@ export const ProductList = (props) => {
         >
           {recommendation ? `Other ${productType} You May Like` : productType}
         </Typography>
-        {fourItem && (
+        {viewAllButton && (
           <Button
             size="small"
             style={{
@@ -34,6 +42,7 @@ export const ProductList = (props) => {
               color: "#AF1515",
               textTransform: "capitalize",
             }}
+            onClick={viewAllHandler}
           >
             View All
           </Button>
