@@ -3,6 +3,7 @@ import { Box, Link } from "@mui/material";
 
 import TheWineCornerLogo from "../assets/The Wine Corner Logo.svg";
 import { SearchBar } from "./SearchBar";
+import { productList } from "../seeder/productList";
 
 const links = {
   textDecoration: "none",
@@ -24,30 +25,13 @@ export const Topbar = () => {
       <Box
         style={{ display: "flex", alignItems: "center", marginLeft: "2rem" }}
       >
-        <Link href="/beer" style={links}>
-          Beer
-        </Link>
-        <Link href="/other" style={links}>
-          Other
-        </Link>
-        <Link href="/red-wine" style={links}>
-          Red Wine
-        </Link>
-        <Link href="/rose-wine" style={links}>
-          Rose Wine
-        </Link>
-        <Link href="/soju" style={links}>
-          Soju
-        </Link>
-        <Link href="/whisky" style={links}>
-          Whisky
-        </Link>
-        <Link href="/white-wine" style={links}>
-          White Wine
-        </Link>
-        <Link href="/product-detail" style={links}>
-          Product Detail
-        </Link>
+        {productList.map((data, index) => {
+          return (
+            <Link key={index} href={data.productPath} style={links}>
+              {data.productType}
+            </Link>
+          );
+        })}
       </Box>
     </Box>
   );

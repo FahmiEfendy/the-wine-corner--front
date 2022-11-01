@@ -1,13 +1,28 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Box, Button, Paper, Typography } from "@mui/material";
 
+import { productActions } from "../store";
+
 export const Product = (props) => {
-  const { productImage, productName, productPrice, productType } = props;
+  const { productImage, productName, productPrice, productId, productPath } =
+    props;
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const clickHandler = () => {
-    navigate(`/${productType}/${productName}`);
+    dispatch(
+      productActions.productDetail({
+        productId,
+        productName,
+        productPrice,
+        productImage,
+        productPath,
+      })
+    );
+    navigate(`${productPath}/${productName}`);
   };
 
   return (

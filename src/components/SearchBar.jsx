@@ -1,7 +1,6 @@
 import React from "react";
-
-import SearchIcon from "@mui/icons-material/Search";
 import { Box, IconButton, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 export const SearchBar = () => {
   return (

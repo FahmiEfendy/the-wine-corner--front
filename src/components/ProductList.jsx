@@ -5,7 +5,12 @@ import { productList } from "../seeder/productList";
 import { Product } from "./Product";
 
 export const ProductList = (props) => {
-  const { productType, fourItem = false, recommendation = false } = props;
+  const {
+    productType,
+    fourItem = false,
+    recommendation = false,
+    productPath,
+  } = props;
 
   return (
     <div>
@@ -52,6 +57,7 @@ export const ProductList = (props) => {
                     productName={data.productName}
                     productPrice={data.productPrice}
                     productType={productType}
+                    productPath={productPath}
                   />
                 </Grid>
               );

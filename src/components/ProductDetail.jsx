@@ -1,23 +1,29 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Box, Button, Typography } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
+
 import { ProductList } from "./ProductList";
 
 export const ProductDetail = () => {
-  const discountedProductPrice = "Rp100.000";
+  const discountedProductPrice = null;
+
+  const productName = useSelector((state) => state.productName);
+  const productPrice = useSelector((state) => state.productPrice);
+  const productImage = useSelector((state) => state.productImage);
 
   return (
     <>
       <Box style={{ display: "flex", marginTop: "5rem" }}>
         <img
-          src="https://yukorder.com/wp-content/uploads/2022/01/soju-chum-churum-yoghurt.jpg"
+          src={productImage}
           alt=""
           style={{ objectFit: "contain", width: "40%", height: "500px" }}
         />
         <Box style={{ marginTop: "2.5rem" }}>
           <Typography variant="h3" fontWeight={700}>
-            Product Name
+            {productName}
           </Typography>
           <Box sx={{ display: "flex", margin: "1rem 0 2rem 0" }}>
             <Typography
@@ -29,7 +35,7 @@ export const ProductDetail = () => {
                 }
               }
             >
-              Rp105.000
+              {productPrice}
             </Typography>
             <Typography variant="h4" style={{ marginLeft: "1rem" }}>
               {discountedProductPrice}

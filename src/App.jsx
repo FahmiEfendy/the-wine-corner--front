@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { Container } from "@mui/material";
+import { useSelector } from "react-redux";
 
 import { Home } from "./components/Home";
 import { ProductList } from "./components/ProductList";
@@ -11,6 +12,9 @@ import { Footer } from "./components/Footer";
 import { productList } from "./seeder/productList";
 
 function App() {
+  const productPath = useSelector((state) => state.productPath);
+  const productName = useSelector((state) => state.productName);
+
   return (
     <Router>
       <Container maxWidth="xl">
@@ -21,12 +25,15 @@ function App() {
             return (
               <Route
                 key={index}
-                path={`/${data.productPath}`}
+                path={`${data.productPath}`}
                 element={<ProductList productType={data.productType} />}
               />
             );
           })}
-          <Route path="/product-detail" element={<ProductDetail />} />
+          <Route
+            path={`${productPath}/${productName}`}
+            element={<ProductDetail />}
+          />
         </Routes>
         <Footer />
       </Container>
