@@ -13,6 +13,7 @@ export const ProductDetail = () => {
   const productPrice = useSelector((state) => state.productPrice);
   const productImage = useSelector((state) => state.productImage);
   const productType = useSelector((state) => state.productType);
+  const productPath = useSelector((state) => state.productPath);
 
   return (
     <>
@@ -73,6 +74,7 @@ export const ProductDetail = () => {
       </Box>
       <ProductList
         productType={productType}
+        productPath={productPath}
         fourItem={true}
         recommendation={true}
       />

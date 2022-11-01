@@ -29,7 +29,7 @@ export const Product = (props) => {
         productType,
       })
     );
-    navigate(`${productPath}/${productName}`);
+    navigate(`..${productPath}/${productName}`);
   };
 
   return (
