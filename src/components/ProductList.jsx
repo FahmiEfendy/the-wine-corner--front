@@ -45,7 +45,11 @@ export const ProductList = (props) => {
           variant="h6"
           style={{ fontWeight: "700", marginTop: "2.5rem" }}
         >
-          {recommendation ? `Other ${productType} You May Like` : productType}
+          {recommendation
+            ? products(recommendationProduct).length > 0
+              ? `Other ${productType} You May Like`
+              : ""
+            : productType}
         </Typography>
         {viewAllButton && (
           <Button

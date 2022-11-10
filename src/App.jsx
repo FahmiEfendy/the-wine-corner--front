@@ -8,6 +8,7 @@ import { ProductDetail } from "./components/ProductDetail";
 import { Topbar } from "./components/Topbar";
 import { Footer } from "./components/Footer";
 import { productList } from "./seeder/productList";
+import ProductNotFound from "./components/ProductNotFound";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           );
         })}
         <Route path="/:productPath/:productName" element={<ProductDetail />} />
+        <Route path="*" element={<ProductNotFound />} />
       </Routes>
       <Footer />
     </Container>
