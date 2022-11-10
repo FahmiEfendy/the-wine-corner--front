@@ -17,7 +17,7 @@ export const ProductList = (props) => {
   const navigate = useNavigate();
 
   const viewAllHandler = () => {
-    navigate(`${productPath}`);
+    navigate(`/${productPath}`);
   };
 
   return (

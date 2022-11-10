@@ -1,7 +1,7 @@
 export const productList = [
   // Beer
   {
-    productPath: "/beer",
+    productPath: "beer",
     productType: "Beer",
     data: [
       {
@@ -21,7 +21,7 @@ export const productList = [
 
   // Gin
   {
-    productPath: "/gin",
+    productPath: "gin",
     productType: "Gin",
     data: [
       {
@@ -35,7 +35,7 @@ export const productList = [
 
   // Other
   {
-    productPath: "/other",
+    productPath: "other",
     productType: "Other",
     data: [
       {
@@ -61,7 +61,7 @@ export const productList = [
 
   // Red Wine
   {
-    productPath: "/red-wine",
+    productPath: "red-wine",
     productType: "Red Wine",
     data: [
       {
@@ -258,7 +258,7 @@ export const productList = [
 
   // Rose Wine
   {
-    productPath: "/rose-wine",
+    productPath: "rose-wine",
     productType: "Rose Wine",
     data: [
       {
@@ -278,7 +278,7 @@ export const productList = [
 
   // Soju
   {
-    productPath: "/soju",
+    productPath: "soju",
     productType: "Soju",
     data: [
       {
@@ -358,7 +358,7 @@ export const productList = [
 
   // Whisky
   {
-    productPath: "/whisky",
+    productPath: "whisky",
     productType: "Whisky",
     data: [
       {
@@ -385,7 +385,7 @@ export const productList = [
 
   // White Wine
   {
-    productPath: "/white-wine",
+    productPath: "white-wine",
     productType: "White Wine",
     data: [
       {

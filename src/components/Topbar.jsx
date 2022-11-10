@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Link } from "@mui/material";
+import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import TheWineCornerLogo from "../assets/The Wine Corner Logo.svg";
 import { SearchBar } from "./SearchBar";
@@ -18,7 +19,7 @@ const links = {
 export const Topbar = () => {
   return (
     <Box sx={{ display: "flex", backgroundColor: "#AF1515" }}>
-      <Link href="/" style={links}>
+      <Link to="/" style={links}>
         <img src={TheWineCornerLogo} alt="The Wine Corner Logo" />
       </Link>
       <SearchBar />
@@ -27,7 +28,7 @@ export const Topbar = () => {
       >
         {productList.map((data, index) => {
           return (
-            <Link key={index} href={data.productPath} style={links}>
+            <Link to={`/${data.productPath}`} key={index} style={links}>
               {data.productType}
             </Link>
           );
