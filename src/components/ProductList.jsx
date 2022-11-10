@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -12,12 +13,29 @@ export const ProductList = (props) => {
     viewAllButton = false,
     productType,
     productPath,
+    hideProduct,
   } = props;
 
   const navigate = useNavigate();
 
   const viewAllHandler = () => {
     navigate(`/${productPath}`);
+  };
+
+  const selectedProductType = productList.find(
+    (data) => data.productType === productType
+  );
+
+  const recommendationProduct = selectedProductType.data.filter(
+    (data) => data.no !== hideProduct
+  );
+
+  const products = (recommendationProduct) => {
+    if (fourItem) {
+      return recommendationProduct.slice(0, 4);
+    } else if (!fourItem) {
+      return recommendationProduct;
+    }
   };
 
   return (
@@ -49,29 +67,20 @@ export const ProductList = (props) => {
         )}
       </Box>
       <Grid container spacing={2}>
-        {productList
-          .filter((data) => {
-            return data.productType === productType;
-          })
-          .map((data) => {
-            return fourItem ? data.data.slice(0, 4) : data.data;
-          })
-          .map((data) =>
-            data.map((data) => {
-              return (
-                <Grid key={data.no} item xs={3}>
-                  <Product
-                    productId={data.no}
-                    productImage={data.productImage}
-                    productName={data.productName}
-                    productPrice={data.productPrice}
-                    productType={productType}
-                    productPath={productPath}
-                  />
-                </Grid>
-              );
-            })
-          )}
+        {products(recommendationProduct).map((data) => {
+          return (
+            <Grid key={data.no} item xs={3}>
+              <Product
+                productId={data.no}
+                productImage={data.productImage}
+                productName={data.productName}
+                productPrice={data.productPrice}
+                productType={productType}
+                productPath={productPath}
+              />
+            </Grid>
+          );
+        })}
       </Grid>
     </div>
   );

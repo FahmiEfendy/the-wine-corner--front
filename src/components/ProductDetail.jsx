@@ -84,6 +84,7 @@ export const ProductDetail = () => {
         </Box>
       </Box>
       <ProductList
+        hideProduct={selectedProduct.no}
         productType={productType}
         productPath={productPath}
         fourItem={true}
