@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { Container } from "@mui/material";
 
@@ -12,33 +11,28 @@ import { productList } from "./seeder/productList";
 
 function App() {
   return (
-    <Router>
-      <Container maxWidth="xl">
-        <Topbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {productList.map((data, index) => {
-            return (
-              <Route
-                key={index}
-                path={`/${data.productPath}`}
-                element={
-                  <ProductList
-                    productType={data.productType}
-                    productPath={data.productPath}
-                  />
-                }
-              />
-            );
-          })}
-          <Route
-            path="/:productPath/:productName"
-            element={<ProductDetail />}
-          />
-        </Routes>
-        <Footer />
-      </Container>
-    </Router>
+    <Container maxWidth="xl">
+      <Topbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {productList.map((data, index) => {
+          return (
+            <Route
+              key={index}
+              path={`/${data.productPath}`}
+              element={
+                <ProductList
+                  productType={data.productType}
+                  productPath={data.productPath}
+                />
+              }
+            />
+          );
+        })}
+        <Route path="/:productPath/:productName" element={<ProductDetail />} />
+      </Routes>
+      <Footer />
+    </Container>
   );
 }
 
