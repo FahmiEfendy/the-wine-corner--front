@@ -15,29 +15,34 @@ import {
 
 function App() {
   return (
-    <Container maxWidth="xl">
+    <>
       <Topbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {productList.map((data, index) => {
-          return (
-            <Route
-              key={index}
-              path={`/${data.productPath}`}
-              element={
-                <ProductList
-                  productType={data.productType}
-                  productPath={data.productPath}
-                />
-              }
-            />
-          );
-        })}
-        <Route path="/:productPath/:productName" element={<ProductDetail />} />
-        <Route path="*" element={<ProductNotFound />} />
-      </Routes>
+      <Container maxWidth="xl">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {productList.map((data, index) => {
+            return (
+              <Route
+                key={index}
+                path={`/${data.productPath}`}
+                element={
+                  <ProductList
+                    productType={data.productType}
+                    productPath={data.productPath}
+                  />
+                }
+              />
+            );
+          })}
+          <Route
+            path="/:productPath/:productName"
+            element={<ProductDetail />}
+          />
+          <Route path="*" element={<ProductNotFound />} />
+        </Routes>
+      </Container>
       <Footer />
-    </Container>
+    </>
   );
 }
 

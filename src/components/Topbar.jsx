@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 import TheWineCornerLogo from "../assets/The Wine Corner Logo.svg";
 import { SearchBar } from "./";
@@ -19,22 +19,28 @@ const links = {
 
 const Topbar = () => {
   return (
-    <Box sx={{ display: "flex", backgroundColor: "#AF1515" }}>
-      <Link to="/" style={links}>
-        <img src={TheWineCornerLogo} alt="The Wine Corner Logo" />
-      </Link>
-      <SearchBar />
-      <Box
-        style={{ display: "flex", alignItems: "center", marginLeft: "2rem" }}
-      >
-        {productList.map((data, index) => {
-          return (
-            <Link to={`/${data.productPath}`} key={index} style={links}>
-              {data.productType}
-            </Link>
-          );
-        })}
-      </Box>
+    <Box
+      sx={{
+        backgroundColor: "#AF1515",
+      }}
+    >
+      <Container maxWidth="xl" sx={{ display: "flex" }}>
+        <Link to="/">
+          <img src={TheWineCornerLogo} alt="The Wine Corner Logo" />
+        </Link>
+        <SearchBar />
+        <Box
+          style={{ display: "flex", alignItems: "center", marginLeft: "2rem" }}
+        >
+          {productList.map((data, index) => {
+            return (
+              <Link to={`/${data.productPath}`} key={index} style={links}>
+                {data.productType}
+              </Link>
+            );
+          })}
+        </Box>
+      </Container>
     </Box>
   );
 };
