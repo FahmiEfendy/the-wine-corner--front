@@ -27,6 +27,21 @@ const ProductDetail = () => {
     (data) => data.productName === productName
   );
 
+  const mailHandler = () => {
+    const email = "dummy_email@gmail.com";
+    const cc = "dummy_cc@gmail.com";
+    const subject = "Product Availability";
+    const body = `Hello, is this ${productName} ready ?`;
+
+    window.open(`mailto:${email}?cc=${cc}&subject=${subject}&body=${body}`);
+  };
+
+  const phoneHandler = () => {
+    const phoneNumber = 1234567890;
+
+    window.open(`tel:${[phoneNumber]}`);
+  };
+
   return (
     <>
       <Grid container style={{ marginTop: "5rem" }}>
@@ -73,6 +88,7 @@ const ProductDetail = () => {
                   padding: "0 1rem",
                   textTransform: "capitalize",
                 }}
+                onClick={mailHandler}
               >
                 Contact via Email
               </Button>
@@ -86,6 +102,7 @@ const ProductDetail = () => {
                   margin: "0 auto 0 2rem",
                   textTransform: "capitalize",
                 }}
+                onClick={phoneHandler}
               >
                 Contact via Phone
               </Button>
