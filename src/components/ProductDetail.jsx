@@ -24,7 +24,7 @@ const ProductDetail = () => {
   );
 
   const selectedProduct = selectedProductType.data.find(
-    (data) => data.productName === productName
+    (data) => data.productName.replace("%", "") === productName
   );
 
   const mailHandler = () => {

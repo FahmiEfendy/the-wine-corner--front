@@ -9,7 +9,7 @@ const Product = (props) => {
   const navigate = useNavigate();
 
   const productDetailHandler = () => {
-    navigate(`/${productPath}/${productName}`);
+    navigate(`/${productPath}/${productName.replace("%", "")}`);
   };
 
   return (
