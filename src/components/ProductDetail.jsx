@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 
@@ -29,61 +29,70 @@ const ProductDetail = () => {
 
   return (
     <>
-      <Box style={{ display: "flex", marginTop: "5rem" }}>
-        <img
-          src={selectedProduct.productImage}
-          alt={selectedProduct.productName}
-          style={{ objectFit: "contain", width: "40%", height: "500px" }}
-        />
-        <Box style={{ marginTop: "2.5rem" }}>
-          <Typography variant="h3" fontWeight={700}>
-            {selectedProduct.productName}
-          </Typography>
-          <Box sx={{ display: "flex", margin: "1rem 0 2rem 0" }}>
-            <Typography
-              variant="h4"
-              style={
-                discountedProductPrice && {
-                  color: "red",
-                  textDecoration: "line-through",
+      <Grid container style={{ marginTop: "5rem" }}>
+        <Grid item xs={5}>
+          <img
+            src={selectedProduct.productImage}
+            alt={selectedProduct.productName}
+            style={{
+              objectFit: "contain",
+              height: "500px",
+              margin: " 0 auto 0 auto",
+              display: "block",
+            }}
+          />
+        </Grid>
+        <Grid item xs={7}>
+          <Box style={{ marginTop: "2.5rem" }}>
+            <Typography variant="h4" fontWeight={700}>
+              {selectedProduct.productName}
+            </Typography>
+            <Box sx={{ display: "flex", margin: "1rem 0 2rem 0" }}>
+              <Typography
+                variant="h4"
+                style={
+                  discountedProductPrice && {
+                    color: "red",
+                    textDecoration: "line-through",
+                  }
                 }
-              }
-            >
-              {selectedProduct.productPrice}
-            </Typography>
-            <Typography variant="h4" style={{ marginLeft: "1rem" }}>
-              {discountedProductPrice}
-            </Typography>
+              >
+                {selectedProduct.productPrice}
+              </Typography>
+              <Typography variant="h4" style={{ marginLeft: "1rem" }}>
+                {discountedProductPrice}
+              </Typography>
+            </Box>
+            <Box>
+              <Button
+                startIcon={<EmailIcon />}
+                style={{
+                  backgroundColor: "#AF1515",
+                  color: "#FFFFFF",
+                  height: "3rem",
+                  padding: "0 1rem",
+                  textTransform: "capitalize",
+                }}
+              >
+                Contact via Email
+              </Button>
+              <Button
+                startIcon={<PhoneIcon />}
+                style={{
+                  border: "1px solid #AF1515",
+                  color: "#AF1515",
+                  height: "3rem",
+                  padding: "0 1rem",
+                  margin: "0 auto 0 2rem",
+                  textTransform: "capitalize",
+                }}
+              >
+                Contact via Phone
+              </Button>
+            </Box>
           </Box>
-          <Box>
-            <Button
-              startIcon={<EmailIcon />}
-              style={{
-                backgroundColor: "#AF1515",
-                color: "#FFFFFF",
-                height: "3rem",
-                padding: "0 1rem",
-                textTransform: "capitalize",
-              }}
-            >
-              Contact via Email
-            </Button>
-            <Button
-              startIcon={<PhoneIcon />}
-              style={{
-                border: "1px solid #AF1515",
-                color: "#AF1515",
-                height: "3rem",
-                padding: "0 1rem",
-                margin: "0 auto 0 2rem",
-                textTransform: "capitalize",
-              }}
-            >
-              Contact via Phone
-            </Button>
-          </Box>
-        </Box>
-      </Box>
+        </Grid>
+      </Grid>
       <ProductList
         hideProduct={selectedProduct.no}
         productType={productType}
