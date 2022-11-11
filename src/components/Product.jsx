@@ -1,13 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import { Box, Button, Paper, Typography } from "@mui/material";
 
-export const Product = (props) => {
+const Product = (props) => {
   const { productImage, productName, productPrice, productPath } = props;
 
   const navigate = useNavigate();
 
-  const clickHandler = () => {
+  const productDetailHandler = () => {
     navigate(`/${productPath}/${productName}`);
   };
 
@@ -19,7 +20,7 @@ export const Product = (props) => {
         flexDirection: "column",
         padding: "1rem",
       }}
-      onClick={clickHandler}
+      onClick={productDetailHandler}
     >
       <Box style={{ display: "flex", justifyContent: "center" }}>
         <img
@@ -47,3 +48,5 @@ export const Product = (props) => {
     </Paper>
   );
 };
+
+export default Product;

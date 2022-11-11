@@ -1,13 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+
 import { Box, Button, Typography } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 
-import { ProductList } from "./ProductList";
 import { productList } from "../seeder/productList";
+import { ProductList } from "./";
 
-export const ProductDetail = () => {
+const ProductDetail = () => {
   const params = useParams();
 
   const discountedProductPrice = null;
@@ -93,3 +94,5 @@ export const ProductDetail = () => {
     </>
   );
 };
+
+export default ProductDetail;

@@ -1,12 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-import { productList } from "../seeder/productList";
-import { Product } from "./Product";
+import { Box, Button, Grid, Typography } from "@mui/material";
 
-export const ProductList = (props) => {
+import { productList } from "../seeder/productList";
+import { Product } from "./";
+
+const ProductList = (props) => {
   const {
     fourItem = false,
     recommendation = false,
@@ -89,3 +89,5 @@ export const ProductList = (props) => {
     </div>
   );
 };
+
+export default ProductList;

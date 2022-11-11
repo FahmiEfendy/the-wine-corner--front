@@ -1,8 +1,9 @@
 import React from "react";
+
 import { Box, IconButton, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-export const SearchBar = () => {
+const SearchBar = () => {
   return (
     <Box
       sx={{
@@ -32,3 +33,5 @@ export const SearchBar = () => {
     </Box>
   );
 };
+
+export default SearchBar;

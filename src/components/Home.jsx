@@ -1,9 +1,9 @@
 import React from "react";
 
-import { ProductList } from "./ProductList";
 import { productList } from "../seeder/productList";
+import { ProductList } from "./";
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
       {productList.map((data, index) => {
@@ -20,3 +20,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

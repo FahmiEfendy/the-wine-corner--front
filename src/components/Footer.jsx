@@ -1,11 +1,12 @@
 import React from "react";
+
 import { Box, Button, Typography } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
 
 import TheWineCornerLogo from "../assets/The Wine Corner Logo.svg";
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <Box
       style={{
@@ -42,3 +43,5 @@ export const Footer = () => {
     </Box>
   );
 };
+
+export default Footer;

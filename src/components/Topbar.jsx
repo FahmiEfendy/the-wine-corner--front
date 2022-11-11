@@ -1,9 +1,10 @@
 import React from "react";
-import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
+import { Box } from "@mui/material";
+
 import TheWineCornerLogo from "../assets/The Wine Corner Logo.svg";
-import { SearchBar } from "./SearchBar";
+import { SearchBar } from "./";
 import { productList } from "../seeder/productList";
 
 const links = {
@@ -16,7 +17,7 @@ const links = {
   },
 };
 
-export const Topbar = () => {
+const Topbar = () => {
   return (
     <Box sx={{ display: "flex", backgroundColor: "#AF1515" }}>
       <Link to="/" style={links}>
@@ -37,3 +38,5 @@ export const Topbar = () => {
     </Box>
   );
 };
+
+export default Topbar;
