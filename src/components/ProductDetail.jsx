@@ -52,7 +52,7 @@ const ProductDetail = () => {
             style={{
               objectFit: "contain",
               height: "500px",
-              margin: " 0 auto 0 auto",
+              margin: " 0 auto",
               display: "block",
             }}
           />

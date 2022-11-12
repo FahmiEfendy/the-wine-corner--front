@@ -389,31 +389,31 @@ export const productList = [
     productType: "White Wine",
     data: [
       {
-        no: `whisky-${1}`,
+        no: `white-wine-${1}`,
         productName: "30 Mile Chardonnay Australia White Wine",
         productPrice: "Rp320.000",
         productImage: require("../assets/ProductImage/White Wine/30 Mile Chardonnay Australia White Wine.webp"),
       },
       {
-        no: `whisky-${2}`,
+        no: `white-wine-${2}`,
         productName: "30 Mile Sauvignon Blanc",
         productPrice: "Rp320.000",
         productImage: require("../assets/ProductImage/White Wine/30 Mile Sauvignon Blanc.webp"),
       },
       {
-        no: `whisky-${3}`,
+        no: `white-wine-${3}`,
         productName: "Frontera Chardonnay White Wine 2020 Chile",
         productPrice: "Rp395.000",
         productImage: require("../assets/ProductImage/White Wine/Frontera Chardonnay White Wine 2020 Chille.jfif"),
       },
       {
-        no: `whisky-${4}`,
+        no: `white-wine-${4}`,
         productName: "Frontera Late Harvest Sweet White Wine Chile",
         productPrice: "Rp395.000",
         productImage: require("../assets/ProductImage/White Wine/Frontera Late Harvest Sweet White Wine Chille.jfif"),
       },
       {
-        no: `whisky-${5}`,
+        no: `white-wine-${5}`,
         productName: "Montes Alpha Chardonnay",
         productPrice: "Rp675.000",
         productImage: require("../assets/ProductImage/White Wine/Montes Alpha Chardonnay.webp"),

@@ -1,6 +1,7 @@
 import Footer from "./Footer";
 import Home from "./Home";
 import Product from "./Product";
+import ProductBar from "./ProductBar";
 import ProductDetail from "./ProductDetail";
 import ProductList from "./ProductList";
 import ProductNotFound from "./ProductNotFound";
@@ -12,6 +13,7 @@ export {
   Footer,
   Home,
   Product,
+  ProductBar,
   ProductDetail,
   ProductList,
   ProductNotFound,
