@@ -81,12 +81,15 @@ const ProductDetail = () => {
             <Box>
               <Button
                 startIcon={<EmailIcon />}
-                style={{
+                sx={{
                   backgroundColor: "#AF1515",
                   color: "#FFFFFF",
                   height: "3rem",
                   padding: "0 1rem",
                   textTransform: "capitalize",
+                  "&:hover": {
+                    backgroundColor: "#D93434",
+                  },
                 }}
                 onClick={mailHandler}
               >
@@ -94,13 +97,17 @@ const ProductDetail = () => {
               </Button>
               <Button
                 startIcon={<PhoneIcon />}
-                style={{
+                sx={{
                   border: "1px solid #AF1515",
                   color: "#AF1515",
                   height: "3rem",
                   padding: "0 1rem",
                   margin: "0 auto 0 2rem",
                   textTransform: "capitalize",
+                  "&:hover": {
+                    color: "#D93434",
+                    border: "1px solid #D93434",
+                  },
                 }}
                 onClick={phoneHandler}
               >

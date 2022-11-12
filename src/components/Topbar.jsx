@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import { Box, Container, Divider, Paper } from "@mui/material";
 
@@ -12,9 +12,7 @@ const links = {
   color: "#FFFFFF",
   fontSize: "20px",
   margin: "0 1rem",
-  "&:hover": {
-    borderBottom: "1px solid white",
-  },
+  textAlign: "center",
 };
 
 const Topbar = () => {
@@ -28,12 +26,13 @@ const Topbar = () => {
 
   const filteredProduct = allProduct.filter((data) => {
     return searchQuery.length > 0
-      ? data.productName.toLowerCase().includes(searchQuery)
+      ? data.productName.toLowerCase().includes(searchQuery.toLowerCase())
       : [];
   });
 
   useEffect(() => {
     setSearchQuery("");
+    window.scrollTo(0, 0);
   }, [location]);
 
   return (
@@ -53,11 +52,23 @@ const Topbar = () => {
           />
           <Paper
             sx={{
-              maxHeight: "30rem",
+              maxHeight: "25rem",
               width: "30rem",
               overflow: "auto",
               position: "absolute",
               marginTop: "5rem",
+              "&::-webkit-scrollbar": {
+                width: "10px",
+              },
+              "::-webkit-scrollbar-thumb": {
+                backgroundColor: "#AF1515",
+                borderRadius: "8px",
+                border: "3px solid transparent",
+                backgroundClip: "content-box",
+              },
+              "::-webkit-scrollbar-thumb:hover": {
+                backgroundColor: "#D93434",
+              },
             }}
           >
             {searchQuery &&
@@ -81,9 +92,21 @@ const Topbar = () => {
         >
           {productList.map((data, index) => {
             return (
-              <Link to={`/${data.productPath}`} key={index} style={links}>
+              <NavLink
+                to={`/${data.productPath}`}
+                key={index}
+                style={({ isActive }) =>
+                  isActive
+                    ? {
+                        ...links,
+                        borderBottom: "1px solid white",
+                        paddingBottom: "2px",
+                      }
+                    : links
+                }
+              >
                 {data.productType}
-              </Link>
+              </NavLink>
             );
           })}
         </Box>

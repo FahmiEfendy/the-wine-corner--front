@@ -19,6 +19,7 @@ const Product = (props) => {
         display: "flex",
         flexDirection: "column",
         padding: "1rem",
+        cursor: "pointer",
       }}
       onClick={productDetailHandler}
     >
@@ -36,11 +37,14 @@ const Product = (props) => {
         {productPrice}
       </Typography>
       <Button
-        style={{
+        sx={{
           alignSelf: "flex-end",
           backgroundColor: "#AF1515",
           color: "#FFFFFF",
           fontSize: "8px",
+          "&:hover": {
+            backgroundColor: "#D93434",
+          },
         }}
       >
         See Details
