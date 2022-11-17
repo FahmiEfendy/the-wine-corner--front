@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Box, Button, Paper, Typography } from "@mui/material";
+import { Box, Button, Paper, Typography, useMediaQuery } from "@mui/material";
 
 const Product = (props) => {
   const { productImage, productName, productPrice, productPath } = props;
+
+  const matches = useMediaQuery("(max-width:768px)");
 
   const navigate = useNavigate();
 
@@ -18,7 +20,7 @@ const Product = (props) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        padding: "1rem",
+        padding: matches ? ".5rem" : "1rem",
         cursor: "pointer",
       }}
       onClick={productDetailHandler}
@@ -27,13 +29,27 @@ const Product = (props) => {
         <img
           src={productImage}
           alt={productName}
-          style={{ objectFit: "contain", width: "70%", height: "250px" }}
+          style={{
+            objectFit: "contain",
+            width: "70%",
+            height: matches ? "100px" : "250px",
+          }}
         />
       </Box>
-      <Box style={{ height: "70px", display: "flex", alignItems: "center" }}>
-        <Typography style={{ fontSize: "16px" }}>{productName}</Typography>
+      <Box
+        style={{
+          height: "70px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <Typography style={{ fontSize: matches ? "12px" : "16px" }}>
+          {productName}
+        </Typography>
       </Box>
-      <Typography style={{ fontWeight: "700", fontSize: "18px" }}>
+      <Typography
+        style={{ fontWeight: "700", fontSize: matches ? "12px" : "18px" }}
+      >
         {productPrice}
       </Typography>
       <Button
@@ -41,7 +57,7 @@ const Product = (props) => {
           alignSelf: "flex-end",
           backgroundColor: "#AF1515",
           color: "#FFFFFF",
-          fontSize: "8px",
+          fontSize: matches ? "6px" : "8px",
           "&:hover": {
             backgroundColor: "#D93434",
           },

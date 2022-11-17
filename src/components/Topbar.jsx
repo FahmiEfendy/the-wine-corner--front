@@ -1,24 +1,27 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-import { Box, Container, Divider, Paper } from "@mui/material";
+import { Box, Container, Divider, Paper, useMediaQuery } from "@mui/material";
 
 import TheWineCornerLogo from "../assets/The Wine Corner Logo.svg";
 import { ProductBar, SearchBar } from "./";
 import { productList } from "../seeder/productList";
 
-const links = {
-  textDecoration: "none",
-  color: "#FFFFFF",
-  fontSize: "20px",
-  margin: "0 1rem",
-  textAlign: "center",
+const styles = {
+  links: {
+    textDecoration: "none",
+    color: "#FFFFFF",
+    fontSize: "20px",
+    margin: "0 1rem",
+    textAlign: "center",
+  },
 };
 
 const Topbar = () => {
   const location = useLocation();
 
   const [searchQuery, setSearchQuery] = useState("");
+  const matches = useMediaQuery("(max-width:768px)");
 
   const allProduct = productList
     .map((data) => data.data.map((data) => data))
@@ -36,12 +39,8 @@ const Topbar = () => {
   }, [location]);
 
   return (
-    <Box
-      sx={{
-        backgroundColor: "#AF1515",
-      }}
-    >
-      <Container maxWidth="xl" sx={{ display: "flex" }}>
+    <Box sx={{ backgroundColor: "#AF1515", display: matches && "none" }}>
+      <Container sx={{ display: "flex" }}>
         <Link to="/">
           <img src={TheWineCornerLogo} alt="The Wine Corner Logo" />
         </Link>
@@ -99,11 +98,11 @@ const Topbar = () => {
                 style={({ isActive }) =>
                   isActive
                     ? {
-                        ...links,
+                        ...styles.links,
                         borderBottom: "1px solid white",
                         paddingBottom: "2px",
                       }
-                    : links
+                    : styles.links
                 }
               >
                 {data.productType}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 
 import { productList } from "../seeder/productList";
 import { Product } from "./";
@@ -17,6 +17,8 @@ const ProductList = (props) => {
   } = props;
 
   const navigate = useNavigate();
+
+  const matches = useMediaQuery("(max-width:768px)");
 
   const viewAllHandler = () => {
     navigate(`/${productPath}`);
@@ -42,7 +44,7 @@ const ProductList = (props) => {
     <div>
       <Box style={{ display: "flex", marginBottom: ".5rem" }}>
         <Typography
-          variant="h6"
+          variant={matches ? "body1" : "h5"}
           style={{ fontWeight: "700", marginTop: "2.5rem" }}
         >
           {recommendation
@@ -57,10 +59,10 @@ const ProductList = (props) => {
             style={{
               alignSelf: "flex-end",
               marginLeft: "auto",
-              fontSize: "12px",
+              fontSize: matches ? "10px" : "12px",
               border: "1px solid #AF1515",
-              height: "2rem",
-              width: "5rem",
+              height: matches ? "1.5rem" : "2rem",
+              width: matches ? "3rem" : "5rem",
               color: "#AF1515",
               textTransform: "capitalize",
             }}
@@ -73,7 +75,7 @@ const ProductList = (props) => {
       <Grid container spacing={2}>
         {products(recommendationProduct).map((data) => {
           return (
-            <Grid key={data.no} item xs={3}>
+            <Grid key={data.no} item md={3} xs={6}>
               <Product
                 productId={data.no}
                 productImage={data.productImage}
