@@ -14,7 +14,7 @@ const ProductBar = (props) => {
   return (
     <Grid
       container
-      style={{ display: "flex", margin: "1rem 0" }}
+      style={{ display: "flex", margin: "1rem 0", cursor: "pointer" }}
       onClick={productDetailHandler}
     >
       <Grid item xs={3}>

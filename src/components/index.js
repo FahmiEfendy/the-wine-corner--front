@@ -4,10 +4,11 @@ import Product from "./Product";
 import ProductBar from "./ProductBar";
 import ProductDetail from "./ProductDetail";
 import ProductList from "./ProductList";
-import ProductNotFound from "./ProductNotFound";
+import ProductSearch from "./ProductSearch";
 import SearchBar from "./SearchBar";
 import ScrollToTop from "./ScrollToTop";
 import Topbar from "./Topbar";
+import UrlNotFound from "./UrlNotFound";
 
 export {
   Footer,
@@ -16,8 +17,9 @@ export {
   ProductBar,
   ProductDetail,
   ProductList,
-  ProductNotFound,
+  ProductSearch,
   SearchBar,
   ScrollToTop,
   Topbar,
+  UrlNotFound,
 };

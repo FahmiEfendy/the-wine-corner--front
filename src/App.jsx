@@ -9,7 +9,8 @@ import {
   Home,
   ProductDetail,
   ProductList,
-  ProductNotFound,
+  UrlNotFound,
+  ProductSearch,
   Topbar,
 } from "./components";
 
@@ -38,7 +39,8 @@ function App() {
             path="/:productPath/:productName"
             element={<ProductDetail />}
           />
-          <Route path="*" element={<ProductNotFound />} />
+          <Route path="/search/:productSearch" element={<ProductSearch />} />
+          <Route path="*" element={<UrlNotFound />} />
         </Routes>
       </Container>
       <Footer />

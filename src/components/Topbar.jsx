@@ -93,6 +93,7 @@ const Topbar = () => {
           {productList.map((data, index) => {
             return (
               <NavLink
+                end
                 to={`/${data.productPath}`}
                 key={index}
                 style={({ isActive }) =>

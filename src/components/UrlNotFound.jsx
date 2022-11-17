@@ -2,7 +2,7 @@ import React from "react";
 
 import { Typography } from "@mui/material";
 
-const ProductNotFound = () => {
+const UrlNotFound = () => {
   return (
     <div
       style={{
@@ -19,4 +19,4 @@ const ProductNotFound = () => {
   );
 };
 
-export default ProductNotFound;
+export default UrlNotFound;
