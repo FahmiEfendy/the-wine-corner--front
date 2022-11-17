@@ -1,12 +1,20 @@
 import React from "react";
 
-import { Box, Button, Container, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
 
 import TheWineCornerLogo from "../assets/The Wine Corner Logo.svg";
 
 const Footer = () => {
+  const matches = useMediaQuery("(max-width:768px)");
+
   const igHandler = () => {
     window.open("https://www.instagram.com/thewinecorner.id/");
   };
@@ -21,37 +29,64 @@ const Footer = () => {
     <Box
       style={{
         backgroundColor: "#AF1515",
-        marginTop: "10rem",
+        marginTop: matches ? "5rem" : "10rem",
+        height: matches && "12rem",
+        display: "flex",
+        alignItems: "center",
       }}
     >
-      <Container maxWidth="xl" sx={{ display: "flex" }}>
-        <img src={TheWineCornerLogo} alt="The Wine Corner Logo" width={400} />
-        <Box style={{ display: "flex", marginTop: "6rem" }}>
+      <Container sx={{ display: "flex" }}>
+        <img
+          src={TheWineCornerLogo}
+          alt="The Wine Corner Logo"
+          width={matches ? 150 : 400}
+        />
+        <Box
+          style={{
+            display: "flex",
+            marginTop: matches ? "1rem" : "6rem",
+            flexDirection: matches && "column",
+            justifyContent: matches && "space-around",
+          }}
+        >
           <Box>
             <Typography
               variant="h6"
-              style={{ color: "#FFFFFF", fontWeight: "400" }}
+              style={{
+                color: "#FFFFFF",
+                fontWeight: "400",
+                fontSize: matches && "10px",
+              }}
             >
               OUR SOCIAL MEDIA
             </Typography>
             <Button
               startIcon={<InstagramIcon />}
-              style={{ color: "#FFFFFF" }}
+              style={{ color: "#FFFFFF", fontSize: matches && ".6rem" }}
               onClick={igHandler}
             >
               @thewinecorner.id
             </Button>
           </Box>
-          <Box style={{ marginLeft: "3rem" }}>
+          <Box
+            style={{
+              marginLeft: !matches && "3rem",
+              minWidth: matches && "100%",
+            }}
+          >
             <Typography
-              variant="h6"
-              style={{ color: "#FFFFFF", fontWeight: "400" }}
+              variant={matches ? "body2" : "h6"}
+              style={{
+                color: "#FFFFFF",
+                fontWeight: "400",
+                fontSize: matches && "10px",
+              }}
             >
               CONTACT US
             </Typography>
             <Button
               startIcon={<PhoneIcon />}
-              style={{ color: "#FFFFFF" }}
+              style={{ color: "#FFFFFF", fontSize: matches && ".6rem" }}
               onClick={phoneHandler}
             >
               08991890269
