@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 
@@ -10,6 +10,8 @@ import { ProductList } from "./";
 
 const ProductDetail = () => {
   const params = useParams();
+
+  const matches = useMediaQuery("(max-width:768px)");
 
   const discountedProductPrice = null;
 
@@ -51,20 +53,25 @@ const ProductDetail = () => {
             alt={selectedProduct.productName}
             style={{
               objectFit: "contain",
-              height: "500px",
+              height: matches ? "150px" : "500px",
               margin: " 0 auto",
               display: "block",
             }}
           />
         </Grid>
         <Grid item xs={7}>
-          <Box style={{ marginTop: "2.5rem" }}>
-            <Typography variant="h4" fontWeight={700}>
+          <Box style={{ marginTop: !matches && "2.5rem" }}>
+            <Typography variant={matches ? "body1" : "h4"} fontWeight={700}>
               {selectedProduct.productName}
             </Typography>
-            <Box sx={{ display: "flex", margin: "1rem 0 2rem 0" }}>
+            <Box
+              sx={{
+                display: "flex",
+                margin: matches ? ".5rem 0" : "1rem 0 2rem 0",
+              }}
+            >
               <Typography
-                variant="h4"
+                variant={matches ? "body1" : "h4"}
                 style={
                   discountedProductPrice && {
                     color: "red",
@@ -84,9 +91,11 @@ const ProductDetail = () => {
                 sx={{
                   backgroundColor: "#AF1515",
                   color: "#FFFFFF",
-                  height: "3rem",
+                  height: matches ? "2rem" : "3rem",
                   padding: "0 1rem",
+                  fontSize: matches && "10px",
                   textTransform: "capitalize",
+                  marginTop: matches && "1rem",
                   "&:hover": {
                     backgroundColor: "#D93434",
                   },
@@ -100,9 +109,10 @@ const ProductDetail = () => {
                 sx={{
                   border: "1px solid #AF1515",
                   color: "#AF1515",
-                  height: "3rem",
+                  height: matches ? "2rem" : "3rem",
                   padding: "0 1rem",
-                  margin: "0 auto 0 2rem",
+                  margin: matches ? ".5rem 0 5rem 0" : "0 auto 0 2rem",
+                  fontSize: matches && "10px",
                   textTransform: "capitalize",
                   "&:hover": {
                     color: "#D93434",
