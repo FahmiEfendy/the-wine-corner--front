@@ -54,14 +54,14 @@ const ProductDetail = () => {
             style={{
               objectFit: "contain",
               height: matches ? "150px" : "500px",
-              margin: " 0 auto",
+              margin: "0 auto",
               display: "block",
             }}
           />
         </Grid>
         <Grid item xs={7}>
           <Box style={{ marginTop: !matches && "2.5rem" }}>
-            <Typography variant={matches ? "body1" : "h4"} fontWeight={700}>
+            <Typography variant={matches ? "body2" : "h4"} fontWeight={700}>
               {selectedProduct.productName}
             </Typography>
             <Box
@@ -71,7 +71,7 @@ const ProductDetail = () => {
               }}
             >
               <Typography
-                variant={matches ? "body1" : "h4"}
+                variant={matches ? "body2" : "h4"}
                 style={
                   discountedProductPrice && {
                     color: "red",
@@ -91,7 +91,7 @@ const ProductDetail = () => {
                 sx={{
                   backgroundColor: "#AF1515",
                   color: "#FFFFFF",
-                  height: matches ? "2rem" : "3rem",
+                  height: matches ? "1.5rem" : "3rem",
                   padding: "0 1rem",
                   fontSize: matches && "10px",
                   textTransform: "capitalize",
@@ -109,9 +109,9 @@ const ProductDetail = () => {
                 sx={{
                   border: "1px solid #AF1515",
                   color: "#AF1515",
-                  height: matches ? "2rem" : "3rem",
+                  height: matches ? "1.5rem" : "3rem",
                   padding: "0 1rem",
-                  margin: matches ? ".5rem 0 5rem 0" : "0 auto 0 2rem",
+                  margin: matches ? ".5rem 0 2rem 0" : "0 auto 0 2rem",
                   fontSize: matches && "10px",
                   textTransform: "capitalize",
                   "&:hover": {
