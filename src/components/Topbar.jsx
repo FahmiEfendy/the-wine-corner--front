@@ -104,10 +104,10 @@ const Topbar = () => {
                 <Paper
                   sx={{
                     maxHeight: "25rem",
-                    width: "30rem",
+                    width: matches ? "21.5rem" : "30rem",
                     overflow: "auto",
                     position: "absolute",
-                    marginTop: "5rem",
+                    marginTop: matches ? "2.5rem" : "5rem",
                     "&::-webkit-scrollbar": {
                       width: "10px",
                     },
@@ -177,7 +177,7 @@ const Topbar = () => {
                       >
                         {data.productType}
                       </NavLink>
-                      {index < 7 && (
+                      {index < 7 && matches && (
                         <Divider
                           flexItem
                           style={{
