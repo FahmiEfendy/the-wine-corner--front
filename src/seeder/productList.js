@@ -6,12 +6,18 @@ export const productList = [
     data: [
       {
         no: `beer-${1}`,
+        productName: "Budweiser Glass Bottle 330ml",
+        productPrice: "Rp55.000",
+        productImage: require("../assets/ProductImage/Beer/Budweiser Glass Bottle 330ml.jpg"),
+      },
+      {
+        no: `beer-${2}`,
         productName: "Corona Beer Mexico 355ml",
         productPrice: "Rp60.000",
         productImage: require("../assets/ProductImage/Beer/Corona Beer Mexico 355ml.jpg"),
       },
       {
-        no: `beer-${2}`,
+        no: `beer-${3}`,
         productName: "Sapporo Premium Beer Pint Japan 5% alc 330ml",
         productPrice: "Rp60.000",
         productImage: require("../assets/ProductImage/Beer/Sapporo Premium Beer Pint Japan 5 alc 330ml.png"),
@@ -64,6 +70,12 @@ export const productList = [
     productPath: "red-wine",
     productType: "Red Wine",
     data: [
+      {
+        no: `red-wine-${0.9}`,
+        productName: "1502 Davinci Rocca di Cesena Sangiovese 2018 Italy",
+        productPrice: "Rp400.000",
+        productImage: require("../assets/ProductImage/Red Wine/1502 Davinci Rocca di Cesena Sangiovese 2018 Italy.webp"),
+      },
       {
         no: `red-wine-${1}`,
         productName: "Alamos Malbec Argentina",
@@ -194,6 +206,24 @@ export const productList = [
         productImage: require("../assets/ProductImage/Red Wine/Lindeman's Gentleman's Collection Cabernet Sauvignon No. 3.webp"),
       },
       {
+        no: `red-wine-${21.7}`,
+        productName: "Luis Felipe Cabernet Sauvignon 2021 Chille",
+        productPrice: "Rp340.000",
+        productImage: require("../assets/ProductImage/Red Wine/Luis Felipe Cabernet Sauvignon 2021 Chille.jpg"),
+      },
+      {
+        no: `red-wine-${21.8}`,
+        productName: "Luis Felipe Classic Merlot 2021 Chille",
+        productPrice: "Rp340.000",
+        productImage: require("../assets/ProductImage/Red Wine/Luis Felipe Classic Merlot 2021 Chille.png"),
+      },
+      {
+        no: `red-wine-${21.9}`,
+        productName: "Luzzatto Red Italy",
+        productPrice: "Rp310.000",
+        productImage: require("../assets/ProductImage/Red Wine/Luzzatto Red Italy.jfif"),
+      },
+      {
         no: `red-wine-${22}`,
         productName: "Mascetti Sababay Port Style Bali",
         productPrice: "Rp425.000",
@@ -240,6 +270,12 @@ export const productList = [
         productName: "Sterling Vintner's Merlot USA",
         productPrice: "Rp500.000",
         productImage: require("../assets/ProductImage/Red Wine/Sterling Vintner's Merlot USA.png"),
+      },
+      {
+        no: `red-wine-${29.9}`,
+        productName: "Talo Primitivo Di Manduria San Marzano",
+        productPrice: "Rp535.000",
+        productImage: require("../assets/ProductImage/Red Wine/Talo Primitivo Di Manduria San Marzano.png"),
       },
       {
         no: `red-wine-${30}`,
@@ -352,6 +388,26 @@ export const productList = [
         productName: "Jinro Chamisul Strawberry",
         productPrice: "Rp105.000",
         productImage: require("../assets/ProductImage/Soju/Jinro Chamisul Strawberry.jpg"),
+      },
+    ],
+  },
+
+  // Sparkling Wine
+  {
+    productPath: "sparkling-wine",
+    productType: "Sparkling Wine",
+    data: [
+      {
+        no: `sparkling-wine-${1}`,
+        productName: "Freixenet Carta Nevada demi sec Spain",
+        productPrice: "Rp460.000",
+        productImage: require("../assets/ProductImage/Sparkling Wine/Freixenet Carta Nevada demi sec Spain.png"),
+      },
+      {
+        no: `sparkling-wine-${2}`,
+        productName: "Freixenet Ice Semi Seco Spain",
+        productPrice: "Rp530.000",
+        productImage: require("../assets/ProductImage/Sparkling Wine/Freixenet Ice Semi Seco Spain.jpg"),
       },
     ],
   },
