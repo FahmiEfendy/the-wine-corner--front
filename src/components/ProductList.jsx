@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 
@@ -16,13 +16,7 @@ const ProductList = (props) => {
     hideProduct,
   } = props;
 
-  const navigate = useNavigate();
-
   const matches = useMediaQuery("(max-width:768px)");
-
-  const viewAllHandler = () => {
-    navigate(`/${productPath}`);
-  };
 
   const selectedProductType = productList.find(
     (data) => data.productType === productType
@@ -41,7 +35,7 @@ const ProductList = (props) => {
   };
 
   return (
-    <div>
+    <>
       <Box style={{ display: "flex", marginBottom: ".5rem" }}>
         <Typography
           variant={matches ? "body1" : "h5"}
@@ -54,22 +48,29 @@ const ProductList = (props) => {
             : productType}
         </Typography>
         {viewAllButton && (
-          <Button
-            size="small"
+          <Link
+            to={`/${productPath}`}
             style={{
-              alignSelf: "flex-end",
+              textDecoration: "none",
+              color: "#000000",
               marginLeft: "auto",
-              fontSize: matches ? "10px" : "12px",
-              border: "1px solid #AF1515",
-              height: matches ? "1.5rem" : "2rem",
-              width: matches ? "3rem" : "5rem",
-              color: "#AF1515",
-              textTransform: "capitalize",
+              alignSelf: "flex-end",
             }}
-            onClick={viewAllHandler}
           >
-            View All
-          </Button>
+            <Button
+              size="small"
+              style={{
+                fontSize: matches ? "10px" : "12px",
+                border: "1px solid #AF1515",
+                height: matches ? "1.5rem" : "2rem",
+                width: matches ? "3rem" : "5rem",
+                color: "#AF1515",
+                textTransform: "capitalize",
+              }}
+            >
+              View All
+            </Button>
+          </Link>
         )}
       </Box>
       <Grid container spacing={2}>
@@ -88,7 +89,7 @@ const ProductList = (props) => {
           );
         })}
       </Grid>
-    </div>
+    </>
   );
 };
 
