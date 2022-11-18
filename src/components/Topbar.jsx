@@ -80,7 +80,7 @@ const Topbar = () => {
             flexDirection: matches && "column",
             position: matches && "relative",
             top: matches && 40,
-            height: matches ? (isMenuOpen ? "22.5rem" : "3.5rem") : "6.6rem",
+            height: matches ? (isMenuOpen ? "25rem" : "3.5rem") : "6.6rem",
           }}
         >
           {isMenuOpen || !matches ? (
@@ -96,7 +96,7 @@ const Topbar = () => {
                   setSearchQuery={setSearchQuery}
                   searchQuery={searchQuery}
                   sx={{
-                    width: matches ? "21.5rem" : "30rem",
+                    width: matches ? "21.5rem" : "25rem",
                     height: matches ? "2rem" : "3rem",
                   }}
                   sxSearch={{ height: matches ? "2rem" : "2.5rem" }}
@@ -104,7 +104,7 @@ const Topbar = () => {
                 <Paper
                   sx={{
                     maxHeight: "25rem",
-                    width: matches ? "21.5rem" : "30rem",
+                    width: matches ? "21.5rem" : "25rem",
                     overflow: "auto",
                     position: "absolute",
                     marginTop: matches ? "2.5rem" : "5rem",
@@ -177,7 +177,7 @@ const Topbar = () => {
                       >
                         {data.productType}
                       </NavLink>
-                      {index < 7 && matches && (
+                      {index < 8 && matches && (
                         <Divider
                           flexItem
                           style={{
