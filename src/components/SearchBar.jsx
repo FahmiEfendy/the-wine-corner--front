@@ -5,7 +5,7 @@ import { Box, IconButton, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = (props) => {
-  const { searchQuery, setSearchQuery } = props;
+  const { searchQuery, setSearchQuery, sx, sxSearch } = props;
 
   const navigate = useNavigate();
 
@@ -14,11 +14,13 @@ const SearchBar = (props) => {
   };
 
   const searchClickHandler = () => {
-    navigate(`/search/${searchQuery}`);
+    if (searchQuery.length > 0) {
+      navigate(`/search/${searchQuery}`);
+    }
   };
 
   const enterHandler = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && searchQuery.length > 0) {
       navigate(`/search/${searchQuery}`);
     }
   };
@@ -40,15 +42,24 @@ const SearchBar = (props) => {
         InputProps={{
           style: {
             height: "3rem",
-            width: "30rem",
             fontSize: "12px",
             borderRadius: "5px 0px 0px 5px",
             backgroundColor: "#FFFFFF",
+            ...sx,
           },
         }}
       />
-      <Box sx={{ backgroundColor: "black", borderRadius: "0px 5px 5px 0px" }}>
-        <IconButton sx={{ color: "white" }} onClick={searchClickHandler}>
+      <Box
+        sx={{
+          backgroundColor: "black",
+          borderRadius: "0px 5px 5px 0px",
+          ...sxSearch,
+        }}
+      >
+        <IconButton
+          sx={{ color: "white", ...sxSearch }}
+          onClick={searchClickHandler}
+        >
           <SearchIcon />
         </IconButton>
       </Box>
