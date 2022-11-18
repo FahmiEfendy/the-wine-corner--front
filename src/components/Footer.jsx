@@ -35,7 +35,7 @@ const Footer = () => {
         alignItems: "center",
       }}
     >
-      <Container sx={{ display: "flex" }}>
+      <Container maxWidth="xl" sx={{ display: "flex" }}>
         <img
           src={TheWineCornerLogo}
           alt="The Wine Corner Logo"

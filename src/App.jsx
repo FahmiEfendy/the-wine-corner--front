@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <Topbar />
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ minHeight: "37.1rem" }}>
         <Routes>
           <Route path="/" element={<Home />} />
           {productList.map((data, index) => {

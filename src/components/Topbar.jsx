@@ -57,7 +57,6 @@ const Topbar = () => {
             style={{
               position: matches && "absolute",
               left: 10,
-              top: 5,
             }}
           />
         </Link>
@@ -67,7 +66,7 @@ const Topbar = () => {
               color: "#FFFFFF",
               position: "absolute",
               right: 10,
-              top: 8,
+              top: 4,
             }}
             onClick={toggleMenuHandler}
           >
@@ -80,7 +79,7 @@ const Topbar = () => {
             flexDirection: matches && "column",
             position: matches && "relative",
             top: matches && 40,
-            height: matches ? (isMenuOpen ? "25rem" : "3.5rem") : "6.6rem",
+            height: matches ? (isMenuOpen ? "25rem" : "3.1rem") : "6.6rem",
           }}
         >
           {isMenuOpen || !matches ? (
