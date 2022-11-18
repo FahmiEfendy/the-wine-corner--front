@@ -12,12 +12,19 @@ const ProductBar = (props) => {
       to={`/${productPath}/${productName.replace("%", "")}`}
       style={{
         display: "flex",
-        margin: "1rem 0",
         textDecoration: "none",
         color: "#000000",
       }}
     >
-      <Grid container>
+      <Grid
+        container
+        sx={{
+          padding: "1rem 0",
+          "&:hover": {
+            backgroundColor: "rgba(217, 52, 52, 0.1)",
+          },
+        }}
+      >
         <Grid item md={3} xs={4}>
           <img
             src={productImage}
@@ -31,10 +38,10 @@ const ProductBar = (props) => {
           />
         </Grid>
         <Grid item md={9} xs={8}>
-          <Typography style={{ fontSize: matches ? "12px" : "16px" }}>
+          <Typography style={{ fontSize: matches ? "12px" : "14px" }}>
             {productName}
           </Typography>
-          <Typography style={{ fontSize: matches ? "12px" : "18px" }}>
+          <Typography style={{ fontSize: matches ? "12px" : "16px" }}>
             {productPrice}
           </Typography>
         </Grid>
