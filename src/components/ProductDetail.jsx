@@ -42,7 +42,7 @@ const ProductDetail = () => {
 
   return (
     <>
-      <Grid container style={{ marginTop: "5rem" }}>
+      <Grid container style={{ margin: "5rem 0rem" }}>
         <Grid item xs={5}>
           <img
             src={selectedProduct.productImage}

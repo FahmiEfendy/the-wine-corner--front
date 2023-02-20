@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 
@@ -15,6 +15,8 @@ const ProductList = (props) => {
     productPath,
     hideProduct,
   } = props;
+
+  const location = useLocation();
 
   const matches = useMediaQuery("(max-width:768px)");
 
@@ -35,19 +37,21 @@ const ProductList = (props) => {
   };
 
   return (
-    <>
-      <Typography
-        variant={matches ? "body1" : "h5"}
-        style={{ fontWeight: "700", marginTop: "2.5rem" }}
-      >
-        {
+    <Box style={{ marginTop: "2.5rem" }}>
+      {location.pathname === "/" && (
+        <Typography
+          variant={matches ? "body1" : "h5"}
+          style={{ fontWeight: "700" }}
+        >
           {
-            "Red Wine": "Wine",
-            Gin: "Spirit",
-            Soju: "Other Products",
-          }[productType]
-        }
-      </Typography>
+            {
+              "Red Wine": "Wine",
+              Gin: "Spirit",
+              Soju: "Other Products",
+            }[productType]
+          }
+        </Typography>
+      )}
       <Box style={{ display: "flex", marginBottom: ".5rem" }}>
         <Typography
           variant={matches ? "body1" : "h5"}
@@ -101,7 +105,7 @@ const ProductList = (props) => {
           );
         })}
       </Grid>
-    </>
+    </Box>
   );
 };
 
