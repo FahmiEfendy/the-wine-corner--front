@@ -8,6 +8,12 @@ const Product = (props) => {
 
   const matches = useMediaQuery("(max-width:768px)");
 
+  const formatProductName = (text) => {
+    const maxLength = 80;
+
+    return text.slice(0, maxLength) + (text.length > maxLength ? "..." : "");
+  };
+
   return (
     <Link
       to={`/${productPath}/${productName.replace("%", "")}`}
@@ -44,7 +50,7 @@ const Product = (props) => {
           }}
         >
           <Typography style={{ fontSize: matches ? "12px" : "16px" }}>
-            {productName}
+            {formatProductName(productName)}
           </Typography>
         </Box>
         <Typography

@@ -7,6 +7,12 @@ const ProductBar = (props) => {
 
   const matches = useMediaQuery("(max-width:768px)");
 
+  const formatProductName = (text) => {
+    const maxLength = 80;
+
+    return text.slice(0, maxLength) + (text.length > maxLength ? "..." : "");
+  };
+
   return (
     <Link
       to={`/${productPath}/${productName.replace("%", "")}`}
@@ -39,7 +45,7 @@ const ProductBar = (props) => {
         </Grid>
         <Grid item md={9} xs={8}>
           <Typography style={{ fontSize: matches ? "12px" : "14px" }}>
-            {productName}
+            {formatProductName(productName)}
           </Typography>
           <Typography style={{ fontSize: matches ? "12px" : "16px" }}>
             {productPrice}

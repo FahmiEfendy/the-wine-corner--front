@@ -36,10 +36,22 @@ const ProductList = (props) => {
 
   return (
     <>
+      <Typography
+        variant={matches ? "body1" : "h5"}
+        style={{ fontWeight: "700", marginTop: "2.5rem" }}
+      >
+        {
+          {
+            "Red Wine": "Wine",
+            Gin: "Spirit",
+            Soju: "Other Products",
+          }[productType]
+        }
+      </Typography>
       <Box style={{ display: "flex", marginBottom: ".5rem" }}>
         <Typography
           variant={matches ? "body1" : "h5"}
-          style={{ fontWeight: "700", marginTop: "2.5rem" }}
+          style={{ fontWeight: "400", marginTop: "1rem" }}
         >
           {recommendation
             ? products(recommendationProduct).length > 0
