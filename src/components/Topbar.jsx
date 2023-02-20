@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import TheWineCornerLogo from "../assets/The Wine Corner Logo.svg";
 import { ProductBar, SearchBar } from "./";
 import { productList } from "../seeder/productList";
 
@@ -51,7 +50,7 @@ const Topbar = () => {
       <Container maxWidth="xl" sx={{ display: "flex" }}>
         <Link to="/">
           <img
-            src={TheWineCornerLogo}
+            src={require("../assets/logo-wine-corner.jpg")}
             alt="The Wine Corner Logo"
             width={matches ? 50 : 100}
             style={{

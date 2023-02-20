@@ -10,7 +10,6 @@ import {
 import PhoneIcon from "@mui/icons-material/Phone";
 import StoreIcon from "@mui/icons-material/Store";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import TheWineCornerLogo from "../assets/The Wine Corner Logo.svg";
 
 const Footer = () => {
   const matches = useMediaQuery("(max-width:768px)");
@@ -42,7 +41,7 @@ const Footer = () => {
     >
       <Container maxWidth="xl" sx={{ display: "flex" }}>
         <img
-          src={TheWineCornerLogo}
+          src={require("../assets/logo-wine-corner.jpg")}
           alt="The Wine Corner Logo"
           width={matches ? 150 : 400}
         />
