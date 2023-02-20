@@ -1,12 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
-import EmailIcon from "@mui/icons-material/Email";
-import PhoneIcon from "@mui/icons-material/Phone";
 
 import { productList } from "../seeder/productList";
 import { ProductList } from "./";
+
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const ProductDetail = () => {
   const params = useParams();
@@ -29,19 +28,14 @@ const ProductDetail = () => {
     (data) => data.productName.replace("%", "") === productName
   );
 
-  const mailHandler = () => {
-    const email = "dummy_email@gmail.com";
-    const cc = "dummy_cc@gmail.com";
-    const subject = "Product Availability";
-    const body = `Hello, is this ${productName} ready ?`;
-
-    window.open(`mailto:${email}?cc=${cc}&subject=${subject}&body=${body}`);
+  const blibliHandler = () => {
+    window.open("https://www.blibli.com/merchant/the-wine-corner/THW-70022");
   };
 
-  const phoneHandler = () => {
-    const phoneNumber = 1234567890;
+  const whatsAppHandler = () => {
+    const phoneNumber = 628991890269;
 
-    window.open(`tel:${[phoneNumber]}`);
+    window.open(`https://wa.me/${phoneNumber}`);
   };
 
   return (
@@ -87,25 +81,35 @@ const ProductDetail = () => {
             </Box>
             <Box>
               <Button
-                startIcon={<EmailIcon />}
+                startIcon={<WhatsAppIcon sx={{ marginBottom: "2px" }} />}
                 sx={{
                   backgroundColor: "#AF1515",
                   color: "#FFFFFF",
                   height: matches ? "1.5rem" : "3rem",
                   padding: "0 1rem",
                   fontSize: matches && "10px",
-                  textTransform: "capitalize",
+                  textTransform: "none",
                   marginTop: matches && "1rem",
                   "&:hover": {
                     backgroundColor: "#D93434",
                   },
                 }}
-                onClick={mailHandler}
+                onClick={whatsAppHandler}
               >
-                Contact via Email
+                Contact via WhatsApp
               </Button>
               <Button
-                startIcon={<PhoneIcon />}
+                startIcon={
+                  <img
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                      marginBottom: "4px",
+                    }}
+                    src={require("../assets/logo-blibli.png")}
+                    alt="Blibli Logo"
+                  />
+                }
                 sx={{
                   border: "1px solid #AF1515",
                   color: "#AF1515",
@@ -113,15 +117,15 @@ const ProductDetail = () => {
                   padding: "0 1rem",
                   margin: matches ? ".5rem 0 2rem 0" : "0 auto 0 2rem",
                   fontSize: matches && "10px",
-                  textTransform: "capitalize",
+                  textTransform: "none",
                   "&:hover": {
                     color: "#D93434",
                     border: "1px solid #D93434",
                   },
                 }}
-                onClick={phoneHandler}
+                onClick={blibliHandler}
               >
-                Contact via Phone
+                Official Store via Blibli
               </Button>
             </Box>
           </Box>
