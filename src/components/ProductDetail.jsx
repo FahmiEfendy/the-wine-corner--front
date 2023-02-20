@@ -35,7 +35,9 @@ const ProductDetail = () => {
   const whatsAppHandler = () => {
     const phoneNumber = 628991890269;
 
-    window.open(`https://wa.me/${phoneNumber}`);
+    window.open(
+      `https://wa.me/${phoneNumber}?text=Hello,%20apakah%20${productName}%20ready?`
+    );
   };
 
   return (
