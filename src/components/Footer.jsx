@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   Box,
   Button,
@@ -7,9 +6,10 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import PhoneIcon from "@mui/icons-material/Phone";
 
+import PhoneIcon from "@mui/icons-material/Phone";
+import StoreIcon from "@mui/icons-material/Store";
+import InstagramIcon from "@mui/icons-material/Instagram";
 import TheWineCornerLogo from "../assets/The Wine Corner Logo.svg";
 
 const Footer = () => {
@@ -20,9 +20,15 @@ const Footer = () => {
   };
 
   const phoneHandler = () => {
-    const phoneNumber = 1234567890;
+    const phoneNumber = "08991890269";
 
     window.open(`tel:${[phoneNumber]}`);
+  };
+
+  const storeHandler = () => {
+    window.open(
+      "https://www.google.com/maps/place/The+Wine+Corner/@-6.2643896,106.783088,15z/data=!4m5!3m4!1s0x0:0x5cde2091b0d7ada3!8m2!3d-6.2643735!4d106.7830896"
+    );
   };
 
   return (
@@ -32,7 +38,6 @@ const Footer = () => {
         marginTop: matches ? "5rem" : "10rem",
         height: matches && "12rem",
         display: "flex",
-        alignItems: "center",
       }}
     >
       <Container maxWidth="xl" sx={{ display: "flex" }}>
@@ -66,6 +71,37 @@ const Footer = () => {
               onClick={igHandler}
             >
               @thewinecorner.id
+            </Button>
+          </Box>
+          <Box
+            style={{
+              marginLeft: !matches && "3rem",
+              minWidth: matches && "100%",
+            }}
+          >
+            <Typography
+              variant={matches ? "body2" : "h6"}
+              style={{
+                color: "#FFFFFF",
+                fontWeight: "400",
+                fontSize: matches && "10px",
+              }}
+            >
+              OUR STORE
+            </Typography>
+            <Button
+              startIcon={<StoreIcon />}
+              style={{
+                color: "#FFFFFF",
+                fontSize: matches && ".6rem",
+                textAlign: "left",
+                alignItems: "flex-start",
+                textDecoration: "none",
+              }}
+              onClick={storeHandler}
+            >
+              PIM 2 Lt. LG North Atrium No. 3<br />
+              Jakarta Selatan - 12310
             </Button>
           </Box>
           <Box
