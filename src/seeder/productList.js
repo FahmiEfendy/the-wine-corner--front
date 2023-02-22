@@ -514,8 +514,7 @@ export const productList = [
         no: `other-${4}`,
         productName: "Collezione 50 Vino Rosso",
         productPrice: "Rp850.000",
-        // TODO: add image
-        // productImage: require("../assets/ProductImage/Other/"),
+        productImage: require("../assets/ProductImage/Other/Collezione 50 Vino Rosso.jpg"),
       },
       {
         no: `other-${5}`,
