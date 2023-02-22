@@ -50,7 +50,7 @@ const Topbar = () => {
       <Container maxWidth="xl" sx={{ display: "flex" }}>
         <Link to="/">
           <img
-            src={require("../assets/logo-wine-corner.jpg")}
+            src={require("../assets/logo-wine-corner-min.jpg")}
             alt="The Wine Corner Logo"
             width={matches ? 50 : 100}
             style={{

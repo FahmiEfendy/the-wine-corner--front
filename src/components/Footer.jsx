@@ -41,7 +41,7 @@ const Footer = () => {
     >
       <Container maxWidth="xl" sx={{ display: "flex" }}>
         <img
-          src={require("../assets/logo-wine-corner.jpg")}
+          src={require("../assets/logo-wine-corner-min.jpg")}
           alt="The Wine Corner Logo"
           width={matches ? 150 : 400}
         />
