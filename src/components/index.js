@@ -6,7 +6,6 @@ import ProductDetail from "./ProductDetail";
 import ProductList from "./ProductList";
 import ProductSearch from "./ProductSearch";
 import SearchBar from "./SearchBar";
-import ScrollToTop from "./ScrollToTop";
 import Topbar from "./Topbar";
 import UrlNotFound from "./UrlNotFound";
 
@@ -19,7 +18,6 @@ export {
   ProductList,
   ProductSearch,
   SearchBar,
-  ScrollToTop,
   Topbar,
   UrlNotFound,
 };

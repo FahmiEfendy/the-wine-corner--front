@@ -1,12 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 import { Box, IconButton, TextField } from "@mui/material";
+
 import SearchIcon from "@mui/icons-material/Search";
 
-const SearchBar = (props) => {
-  const { searchQuery, setSearchQuery, sx, sxSearch } = props;
-
+const SearchBar = ({ searchQuery, setSearchQuery, sx, sxSearch }) => {
   const navigate = useNavigate();
 
   const searchHandler = (e) => {

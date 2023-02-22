@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-
 import {
   Box,
   Container,
@@ -9,10 +8,11 @@ import {
   Paper,
   useMediaQuery,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 
 import { ProductBar, SearchBar } from "./";
 import { productList } from "../seeder/productList";
+
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Topbar = () => {
   const location = useLocation();

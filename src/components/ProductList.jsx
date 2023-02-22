@@ -1,21 +1,18 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 
-import { productList } from "../seeder/productList";
 import { Product } from "./";
+import { productList } from "../seeder/productList";
 
-const ProductList = (props) => {
-  const {
-    fourItem = false,
-    recommendation = false,
-    viewAllButton = false,
-    productType,
-    productPath,
-    hideProduct,
-  } = props;
-
+const ProductList = ({
+  fourItem = false,
+  recommendation = false,
+  viewAllButton = false,
+  productType,
+  productPath,
+  hideProduct,
+}) => {
   const location = useLocation();
 
   const matches = useMediaQuery("(max-width:768px)");

@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 
 import { Grid, Typography, useMediaQuery } from "@mui/material";
 
-const ProductBar = (props) => {
-  const { productImage, productName, productPath, productPrice } = props;
-
+const ProductBar = ({
+  productImage,
+  productName,
+  productPath,
+  productPrice,
+}) => {
   const matches = useMediaQuery("(max-width:768px)");
 
   const formatProductName = (text) => {

@@ -1,7 +1,7 @@
 import React from "react";
 
-import { productList } from "../seeder/productList";
 import { ProductList } from "./";
+import { productList } from "../seeder/productList";
 
 const Home = () => {
   return (

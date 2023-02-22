@@ -1,10 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-
 import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
 
-import { productList } from "../seeder/productList";
 import { Product } from "./";
+import { productList } from "../seeder/productList";
 
 const ProductSearch = () => {
   const params = useParams();
