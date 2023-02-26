@@ -100,7 +100,8 @@ const Footer = () => {
               onClick={storeHandler}
             >
               PIM 2 Lt. LG North Atrium No. 3<br />
-              Jakarta Selatan - 12310
+              Jakarta Selatan - 12310 <br />
+              (Near Celebrity Fitness)
             </Button>
           </Box>
           <Box
