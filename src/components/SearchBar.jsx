@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, IconButton, TextField } from "@mui/material";
 
 import SearchIcon from "@mui/icons-material/Search";
+import { Box, IconButton, TextField } from "@mui/material";
 
 const SearchBar = ({ searchQuery, setSearchQuery, sx, sxSearch }) => {
   const navigate = useNavigate();

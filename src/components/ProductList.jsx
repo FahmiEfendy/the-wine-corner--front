@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 
 import { Product } from "./";

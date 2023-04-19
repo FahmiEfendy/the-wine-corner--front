@@ -1,8 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+
 import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
 
-import { Product } from "./";
+import { Product } from "../components";
 import { productList } from "../seeder/productList";
 
 const ProductSearch = () => {

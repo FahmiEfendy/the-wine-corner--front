@@ -1,11 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
-
-import { ProductList } from "./";
-import { productList } from "../seeder/productList";
 
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
+
+import { ProductList } from "../components";
+import { productList } from "../seeder/productList";
 
 const ProductDetail = () => {
   const params = useParams();

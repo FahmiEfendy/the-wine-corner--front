@@ -1,4 +1,8 @@
 import React from "react";
+
+import PhoneIcon from "@mui/icons-material/Phone";
+import StoreIcon from "@mui/icons-material/Store";
+import InstagramIcon from "@mui/icons-material/Instagram";
 import {
   Box,
   Button,
@@ -6,10 +10,6 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-
-import PhoneIcon from "@mui/icons-material/Phone";
-import StoreIcon from "@mui/icons-material/Store";
-import InstagramIcon from "@mui/icons-material/Instagram";
 
 const Footer = () => {
   const matches = useMediaQuery("(max-width:768px)");

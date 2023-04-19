@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import { Box, Button, Paper, Typography, useMediaQuery } from "@mui/material";
 
 const Product = ({ productImage, productName, productPrice, productPath }) => {

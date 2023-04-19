@@ -1,17 +1,11 @@
 import React from "react";
-import { Container } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 
+import { Container } from "@mui/material";
+
 import { productList } from "./seeder/productList";
-import {
-  Footer,
-  Home,
-  ProductDetail,
-  ProductList,
-  UrlNotFound,
-  ProductSearch,
-  Topbar,
-} from "./components";
+import { Footer, ProductList, Topbar } from "./components";
+import { Home, ProductDetail, UrlNotFound, ProductSearch } from "./pages";
 
 function App() {
   return (

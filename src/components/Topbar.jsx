@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   Box,
   Container,
@@ -11,8 +13,6 @@ import {
 
 import { ProductBar, SearchBar } from "./";
 import { productList } from "../seeder/productList";
-
-import MenuIcon from "@mui/icons-material/Menu";
 
 const Topbar = () => {
   const location = useLocation();
