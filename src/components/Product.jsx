@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 
 import { Box, Button, Paper, Typography, useMediaQuery } from "@mui/material";
 
-const Product = ({ productImage, productName, productPrice, productPath }) => {
+const Product = ({
+  productId,
+  productImage,
+  productName,
+  productPrice,
+  productPath,
+}) => {
   const matches = useMediaQuery("(max-width:768px)");
 
   const formatProductName = (text) => {
@@ -14,7 +20,7 @@ const Product = ({ productImage, productName, productPrice, productPath }) => {
 
   return (
     <Link
-      to={`/${productPath}/${productName.replace("%", "")}`}
+      to={`${productPath}/${productId}`}
       style={{
         textDecoration: "none",
         color: "#000000",

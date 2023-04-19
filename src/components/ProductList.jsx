@@ -14,51 +14,48 @@ import { ErrorAlert, Product } from "./";
 import useHttpRequest from "../hooks/http-hook";
 
 const ProductList = ({
-  fourItem = false,
-  recommendation = false,
-  viewAllButton = false,
-  productType,
+  productId,
   productPath,
-  hideProduct,
+  productType,
+  fourItem = false,
+  viewAllButton = false,
+  recommendation = false,
 }) => {
   const location = useLocation();
+
   const matches = useMediaQuery("(max-width:768px)");
 
   const [productList, setProductList] = useState();
 
   const { isLoading, error, sendRequest, clearErrorHandler } = useHttpRequest();
 
-  // const selectedProductType = productList.find(
-  //   (data) => data.productType === productType
-  // );
-
-  // const recommendationProduct = selectedProductType.data.filter(
-  //   (data) => data.no !== hideProduct
-  // );
-
-  // const products = (recommendationProduct) => {
-  //   if (fourItem) {
-  //     return recommendationProduct.slice(0, 4);
-  //   } else if (!fourItem) {
-  //     return recommendationProduct;
-  //   }
-  // };
-
   useEffect(() => {
     const fetchRequest = async () => {
-      try {
-        const responseData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}/product?productType=${productType}`
-        );
+      if (fourItem) {
+        try {
+          const responseData = await sendRequest(
+            `${process.env.REACT_APP_BACKEND_URL}/recommendation?productType=${productType}&productId=${productId}`
+          );
 
-        setProductList(responseData.data[0].products);
-      } catch (err) {
-        console.log(err.message);
+          setProductList(responseData.data);
+        } catch (err) {
+          console.log(err.message);
+        }
+      } else {
+        try {
+          const responseData = await sendRequest(
+            `${process.env.REACT_APP_BACKEND_URL}/product?productType=${productType}`
+          );
+
+          setProductList(responseData.data[0].products);
+        } catch (err) {
+          console.log(err.message);
+        }
       }
     };
 
     fetchRequest();
-  }, [productType, sendRequest]);
+  }, [fourItem, productId, productType, sendRequest]);
 
   return (
     <React.Fragment>
@@ -87,12 +84,10 @@ const ProductList = ({
                   variant={matches ? "body1" : "h5"}
                   style={{ fontWeight: "400", marginTop: "1rem" }}
                 >
-                  {/* {recommendation
-        ? products(recommendationProduct).length > 0
-          ? `Other ${productType} You May Like`
-          : ""
-        : productType} */}
-                  {productType}
+                  {recommendation
+                    ? productList.length > 0 &&
+                      `Other ${productType} You May Like`
+                    : productType}
                 </Typography>
                 {viewAllButton && (
                   <Link

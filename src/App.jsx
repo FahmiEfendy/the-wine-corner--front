@@ -28,10 +28,7 @@ function App() {
               />
             );
           })}
-          <Route
-            path="/:productPath/:productName"
-            element={<ProductDetail />}
-          />
+          <Route path="/:productPath/:productId" element={<ProductDetail />} />
           <Route path="/search/:productSearch" element={<ProductSearch />} />
           <Route path="*" element={<UrlNotFound />} />
         </Routes>
