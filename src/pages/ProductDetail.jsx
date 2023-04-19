@@ -163,7 +163,7 @@ const ProductDetail = () => {
               <ProductList
                 productId={selectedProduct.id}
                 productType={productType}
-                productPath={productPath}
+                productPath={`/${productPath}`}
                 fourItem={true}
                 recommendation={true}
               />
