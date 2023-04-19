@@ -1,23 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { ProductList } from "../components";
-import { productList } from "../seeder/productList";
+import { CircularProgress } from "@mui/material";
+
+import useHttpRequest from "../hooks/http-hook";
+import { ErrorAlert, ProductList } from "../components";
 
 const Home = () => {
-  return (
-    <>
-      {productList.map((data, index) => {
-        return (
-          <ProductList
-            key={index}
-            productType={data.productType}
-            productPath={data.productPath}
-            fourItem={data.data.length >= 4 && true}
-            viewAllButton={data.data.length >= 4 && true}
-          />
+  const [productList, setProductList] = useState([]);
+
+  const { isLoading, error, sendRequest, clearErrorHandler } = useHttpRequest();
+
+  useEffect(() => {
+    const fetchRequest = async () => {
+      try {
+        const responseData = await sendRequest(
+          `${process.env.REACT_APP_BACKEND_URL}/product`
         );
-      })}
-    </>
+
+        setProductList(responseData.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+
+    fetchRequest();
+  }, [sendRequest]);
+
+  return (
+    <React.Fragment>
+      {!error && isLoading ? (
+        <CircularProgress />
+      ) : (
+        productList?.map((data) => {
+          return (
+            <ProductList
+              key={data.id}
+              productType={data.productType}
+              productPath={data.productPath}
+              fourItem={data.products.length >= 4 && true}
+              viewAllButton={data.products.length >= 4 && true}
+            />
+          );
+        })
+      )}
+      <ErrorAlert error={error} onClose={clearErrorHandler} />
+    </React.Fragment>
   );
 };
 

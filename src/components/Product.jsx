@@ -31,7 +31,7 @@ const Product = ({ productImage, productName, productPrice, productPath }) => {
       >
         <Box style={{ display: "flex", justifyContent: "center" }}>
           <img
-            src={productImage}
+            src={`${process.env.REACT_APP_ASSET_URL}/${productImage}`}
             alt={productName}
             style={{
               objectFit: "contain",
