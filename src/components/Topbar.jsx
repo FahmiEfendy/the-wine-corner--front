@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   Box,
+  CircularProgress,
   Container,
   Divider,
   IconButton,
@@ -11,25 +12,19 @@ import {
   useMediaQuery,
 } from "@mui/material";
 
-import { ProductBar, SearchBar } from "./";
-import { productList } from "../seeder/productList";
+import useHttpRequest from "../hooks/http-hook";
+import { ErrorAlert, ProductBar, SearchBar } from "./";
 
 const Topbar = () => {
   const location = useLocation();
 
+  const [productList, setProductList] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const matches = useMediaQuery("(max-width:768px)");
 
-  const allProduct = productList
-    .map((data) => data.data.map((data) => data))
-    .flat();
-
-  const filteredProduct = allProduct.filter((data) => {
-    return searchQuery.length > 0
-      ? data.productName.toLowerCase().includes(searchQuery.toLowerCase())
-      : [];
-  });
+  const { isLoading, error, sendRequest, clearErrorHandler } = useHttpRequest();
 
   const toggleMenuHandler = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -38,6 +33,22 @@ const Topbar = () => {
   const closeMenuHandler = () => {
     setIsMenuOpen(false);
   };
+
+  useEffect(() => {
+    const fetchRequest = async () => {
+      try {
+        const responseData = await sendRequest(
+          `${process.env.REACT_APP_BACKEND_URL}/product?productSearch=${searchQuery}`
+        );
+
+        setProductList(responseData.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+
+    fetchRequest();
+  }, [searchQuery, sendRequest]);
 
   useEffect(() => {
     setSearchQuery("");
@@ -121,21 +132,28 @@ const Topbar = () => {
                   }}
                 >
                   {searchQuery &&
-                    filteredProduct?.map((data) => {
-                      return (
-                        <Fragment key={data.no}>
-                          <ProductBar
-                            productImage={data.productImage}
-                            productName={data.productName}
-                            productPath={data.no
-                              .replace(/[0-9]/g, "")
-                              .slice(0, -1)}
-                            productPrice={data.productPrice}
-                          />
-                          <Divider />
-                        </Fragment>
-                      );
-                    })}
+                    !error &&
+                    (isLoading ? (
+                      <CircularProgress />
+                    ) : (
+                      productList?.map((data) => {
+                        const productPath = data.productPath;
+                        return data?.products.map((product) => {
+                          return (
+                            <Fragment key={product.id}>
+                              <ProductBar
+                                productId={product.id}
+                                productImage={`${process.env.REACT_APP_ASSET_URL}/${product.productImage}`}
+                                productName={product.productName}
+                                productPath={productPath}
+                                productPrice={product.productPrice}
+                              />
+                              <Divider />
+                            </Fragment>
+                          );
+                        });
+                      })
+                    ))}
                 </Paper>
               </Box>
               <Box
@@ -151,7 +169,7 @@ const Topbar = () => {
                     <React.Fragment key={index}>
                       <NavLink
                         end
-                        to={`/${data.productPath}`}
+                        to={`${data.productPath}`}
                         onClick={closeMenuHandler}
                         style={({ isActive }) =>
                           isActive
@@ -195,6 +213,7 @@ const Topbar = () => {
           )}
         </Box>
       </Container>
+      <ErrorAlert error={error} onClose={clearErrorHandler} />
     </Box>
   );
 };

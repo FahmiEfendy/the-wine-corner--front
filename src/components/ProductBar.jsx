@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Grid, Typography, useMediaQuery } from "@mui/material";
 
 const ProductBar = ({
+  productId,
   productImage,
   productName,
   productPath,
@@ -18,7 +19,7 @@ const ProductBar = ({
 
   return (
     <Link
-      to={`/${productPath}/${productName.replace("%", "")}`}
+      to={`${productPath}/${productId}`}
       style={{
         display: "flex",
         textDecoration: "none",
