@@ -5,7 +5,13 @@ import { Container } from "@mui/material";
 
 import useHttpRequest from "./hooks/http-hook";
 import { ErrorAlert, Footer, ProductList, Topbar } from "./components";
-import { Home, ProductDetail, UrlNotFound, ProductSearch } from "./pages";
+import {
+  Admin,
+  Home,
+  ProductDetail,
+  UrlNotFound,
+  ProductSearch,
+} from "./pages";
 
 function App() {
   const [productList, setProductList] = useState();
@@ -53,6 +59,7 @@ function App() {
             })}
           <Route path="/:productPath/:productId" element={<ProductDetail />} />
           <Route path="/search/:productSearch" element={<ProductSearch />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<UrlNotFound />} />
         </Routes>
       </Container>
