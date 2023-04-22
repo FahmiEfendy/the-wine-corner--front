@@ -15,7 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import ImageUpload from "./ImageUpload";
+import { ImageUpload } from "./";
 import useHttpHook from "../hooks/http-hook";
 import AuthContext from "../context/auth-context";
 import ErrorAlert from "../components/ErrorAlert";
