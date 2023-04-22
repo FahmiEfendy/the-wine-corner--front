@@ -30,7 +30,9 @@ const Admin = () => {
 
   const auth = useContext(AuthContext);
 
+  const [editId, setEditId] = useState(null);
   const [deleteId, setDeleteId] = useState(null);
+  const [productPath, setProductPath] = useState("");
   const [productList, setProductList] = useState([]);
   const [deleteProductName, setDeleteProductName] = useState("");
   const [isInputModalOpen, setIsInputModalOpen] = useState(false);
@@ -50,8 +52,16 @@ const Admin = () => {
     setIsInputModalOpen(true);
   };
 
+  const openModalHandler = (id, path) => {
+    setEditId(id);
+    setProductPath(path);
+    setIsInputModalOpen(true);
+  };
+
   const closeModalHandler = () => {
     setIsInputModalOpen(false);
+    setEditId(null);
+    setProductPath("");
   };
 
   const openDeleteModalHandler = (id, name) => {
@@ -62,6 +72,8 @@ const Admin = () => {
 
   const closeDeleteModalHandler = () => {
     setIsDeleteModalOpen(false);
+    setDeleteId(null);
+    setDeleteProductName("");
   };
 
   useEffect(() => {
@@ -178,7 +190,10 @@ const Admin = () => {
                                   <>
                                     <IconButton
                                       onClick={() => {
-                                        console.log(product.id);
+                                        openModalHandler(
+                                          product.id,
+                                          productPath
+                                        );
                                       }}
                                     >
                                       <EditIcon />
@@ -209,6 +224,8 @@ const Admin = () => {
         ))}
 
       <InputModal
+        id={editId}
+        path={productPath}
         isOpen={isInputModalOpen}
         closeModalHandler={closeModalHandler}
       />

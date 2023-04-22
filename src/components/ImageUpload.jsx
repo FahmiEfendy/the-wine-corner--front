@@ -26,7 +26,7 @@ const style = {
   },
 };
 
-const ImageUpload = ({ id, setProductImage }) => {
+const ImageUpload = ({ id, setProductImage, updateFile }) => {
   const filePickedRef = useRef();
 
   const [file, setFile] = useState();
@@ -48,12 +48,17 @@ const ImageUpload = ({ id, setProductImage }) => {
   };
 
   useEffect(() => {
+    if (updateFile) {
+      setPreviewFile(updateFile);
+      return;
+    }
+
     if (!file) return;
 
     const fileReader = new FileReader();
     fileReader.onload = () => setPreviewFile(fileReader.result);
     fileReader.readAsDataURL(file);
-  }, [file]);
+  }, [file, updateFile]);
 
   return (
     <div className="form-control">
