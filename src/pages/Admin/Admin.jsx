@@ -22,6 +22,7 @@ import { ErrorAlert } from "../../components";
 import { useNavigate } from "react-router-dom";
 import useHttpRequest from "../../hooks/http-hook";
 import AuthContext from "../../context/auth-context";
+import InputModal from "../../components/InputModal";
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const Admin = () => {
   const auth = useContext(AuthContext);
 
   const [productList, setProductList] = useState([]);
+  const [isInputModalOpen, setIsInputModalOpen] = useState(false);
 
   const { isLoading, error, sendRequest, clearErrorHandler } = useHttpRequest();
 
@@ -38,6 +40,14 @@ const Admin = () => {
 
   const logoutHandler = () => {
     auth.logout();
+  };
+
+  const addProductHandler = () => {
+    setIsInputModalOpen(true);
+  };
+
+  const closeModalHandler = () => {
+    setIsInputModalOpen(false);
   };
 
   useEffect(() => {
@@ -71,8 +81,12 @@ const Admin = () => {
                   mt: "2rem",
                 }}
               >
-                <Button variant="contained" size="large">
-                  ADD ITEM
+                <Button
+                  variant="contained"
+                  size="large"
+                  onClick={addProductHandler}
+                >
+                  ADD PRODUCT
                 </Button>
                 <Button
                   variant="contained"
@@ -176,6 +190,12 @@ const Admin = () => {
             </Container>
           )
         ))}
+
+      <InputModal
+        isOpen={isInputModalOpen}
+        closeModalHandler={closeModalHandler}
+      />
+
       <ErrorAlert error={error} onClose={clearErrorHandler} />
     </React.Fragment>
   );
