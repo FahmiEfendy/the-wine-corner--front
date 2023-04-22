@@ -23,14 +23,18 @@ import { useNavigate } from "react-router-dom";
 import useHttpRequest from "../../hooks/http-hook";
 import AuthContext from "../../context/auth-context";
 import InputModal from "../../components/InputModal";
+import DeleteModal from "../../components/DeleteModal";
 
 const Admin = () => {
   const navigate = useNavigate();
 
   const auth = useContext(AuthContext);
 
+  const [deleteId, setDeleteId] = useState(null);
   const [productList, setProductList] = useState([]);
+  const [deleteProductName, setDeleteProductName] = useState("");
   const [isInputModalOpen, setIsInputModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const { isLoading, error, sendRequest, clearErrorHandler } = useHttpRequest();
 
@@ -48,6 +52,16 @@ const Admin = () => {
 
   const closeModalHandler = () => {
     setIsInputModalOpen(false);
+  };
+
+  const openDeleteModalHandler = (id, name) => {
+    setDeleteId(id);
+    setDeleteProductName(name);
+    setIsDeleteModalOpen(true);
+  };
+
+  const closeDeleteModalHandler = () => {
+    setIsDeleteModalOpen(false);
   };
 
   useEffect(() => {
@@ -171,7 +185,10 @@ const Admin = () => {
                                     </IconButton>
                                     <IconButton
                                       onClick={() => {
-                                        console.log(product.id);
+                                        openDeleteModalHandler(
+                                          product.id,
+                                          product.productName
+                                        );
                                       }}
                                     >
                                       <DeleteIcon />
@@ -194,6 +211,13 @@ const Admin = () => {
       <InputModal
         isOpen={isInputModalOpen}
         closeModalHandler={closeModalHandler}
+      />
+
+      <DeleteModal
+        id={deleteId}
+        name={deleteProductName}
+        isOpen={isDeleteModalOpen}
+        closeDeleteModalHandler={closeDeleteModalHandler}
       />
 
       <ErrorAlert error={error} onClose={clearErrorHandler} />

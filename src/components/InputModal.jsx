@@ -112,7 +112,7 @@ const InputModal = ({ isOpen, closeModalHandler }) => {
   }, [sendRequest]);
 
   return (
-    <Modal open={isOpen}>
+    <Modal open={isOpen} onClose={closeModalHandler}>
       <Box style={style}>
         <IconButton
           sx={{
