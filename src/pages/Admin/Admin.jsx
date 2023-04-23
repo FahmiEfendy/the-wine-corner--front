@@ -41,6 +41,7 @@ const Admin = () => {
   const [productPath, setProductPath] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [productList, setProductList] = useState([]);
+  const [productLength, setProductLength] = useState(null);
   const [deleteProductName, setDeleteProductName] = useState("");
   const [isInputModalOpen, setIsInputModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -91,6 +92,7 @@ const Admin = () => {
         );
 
         setProductList(responseData.data);
+        setProductLength(responseData.length);
       } catch (err) {
         console.log(err.message);
       }
@@ -141,114 +143,136 @@ const Admin = () => {
         {!error && isLoading ? (
           <CircularProgress />
         ) : (
-          <TableContainer component={Paper} sx={{ mt: 5 }}>
-            <Table size="small">
-              {productList.map((product) => {
-                const productPath = product.productPath;
-                return (
-                  product.products.length > 0 && (
-                    <React.Fragment key={product.id}>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell colSpan={4} align="center" size="big">
-                            <Typography variant={`${matches ? "h5" : "h4"}`}>
-                              {product.productType}
-                            </Typography>
-                          </TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell>
-                            <Typography variant={`${matches ? "body2" : "h5"}`}>
-                              Product Image
-                            </Typography>
-                          </TableCell>
-                          <TableCell>
-                            <Typography variant={`${matches ? "body2" : "h5"}`}>
-                              Product Name
-                            </Typography>
-                          </TableCell>
-                          <TableCell>
-                            <Typography variant={`${matches ? "body2" : "h5"}`}>
-                              Product Price
-                            </Typography>
-                          </TableCell>
-                          <TableCell>
-                            <Typography variant={`${matches ? "body2" : "h5"}`}>
-                              Action
-                            </Typography>
-                          </TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {product.products.map((product) => {
-                          return (
-                            <TableRow key={product.id}>
-                              <TableCell
-                                style={{
-                                  maxWidth: "10rem",
-                                }}
+          <React.Fragment>
+            <TableContainer component={Paper} sx={{ mt: 5 }}>
+              <Table size="small">
+                {productList.map((product) => {
+                  const productPath = product.productPath;
+                  return (
+                    product.products.length > 0 && (
+                      <React.Fragment key={product.id}>
+                        <TableHead>
+                          <TableRow>
+                            <TableCell colSpan={4} align="center" size="big">
+                              <Typography variant={`${matches ? "h5" : "h4"}`}>
+                                {product.productType}
+                              </Typography>
+                            </TableCell>
+                          </TableRow>
+                        </TableHead>
+                        <TableHead>
+                          <TableRow>
+                            <TableCell>
+                              <Typography
+                                variant={`${matches ? "body2" : "h5"}`}
                               >
-                                <img
-                                  src={`${process.env.REACT_APP_ASSET_URL}/${product.productImage}`}
-                                  alt={product.productName}
+                                Product Image
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography
+                                variant={`${matches ? "body2" : "h5"}`}
+                              >
+                                Product Name
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography
+                                variant={`${matches ? "body2" : "h5"}`}
+                              >
+                                Product Price
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography
+                                variant={`${matches ? "body2" : "h5"}`}
+                              >
+                                Action
+                              </Typography>
+                            </TableCell>
+                          </TableRow>
+                        </TableHead>
+                        <TableBody>
+                          {product.products.map((product) => {
+                            return (
+                              <TableRow key={product.id}>
+                                <TableCell
                                   style={{
-                                    width: `${matches ? "100%" : "30%"}`,
+                                    maxWidth: "10rem",
                                   }}
-                                />
-                              </TableCell>
-                              <TableCell
-                                onClick={() => {
-                                  productDetailHandler(product.id, productPath);
-                                }}
-                              >
-                                <Typography
-                                  variant={`${matches ? "body2" : "h6"}`}
                                 >
-                                  {product.productName}
-                                </Typography>
-                              </TableCell>
-                              <TableCell>
-                                <Typography
-                                  variant={`${matches ? "body2" : "h6"}`}
+                                  <img
+                                    src={`${process.env.REACT_APP_ASSET_URL}/${product.productImage}`}
+                                    alt={product.productName}
+                                    style={{
+                                      width: `${matches ? "100%" : "30%"}`,
+                                    }}
+                                  />
+                                </TableCell>
+                                <TableCell
+                                  onClick={() => {
+                                    productDetailHandler(
+                                      product.id,
+                                      productPath
+                                    );
+                                  }}
                                 >
-                                  {product.productPrice}
-                                </Typography>
-                              </TableCell>
-                              <TableCell>
-                                <>
-                                  <IconButton
-                                    onClick={() => {
-                                      openModalHandler(product.id, productPath);
-                                    }}
-                                    size={matches ? "small" : "medium"}
+                                  <Typography
+                                    variant={`${matches ? "body2" : "h6"}`}
                                   >
-                                    <EditIcon />
-                                  </IconButton>
-                                  <IconButton
-                                    onClick={() => {
-                                      openDeleteModalHandler(
-                                        product.id,
-                                        product.productName
-                                      );
-                                    }}
-                                    size={matches ? "small" : "medium"}
+                                    {product.productName}
+                                  </Typography>
+                                </TableCell>
+                                <TableCell>
+                                  <Typography
+                                    variant={`${matches ? "body2" : "h6"}`}
                                   >
-                                    <DeleteIcon />
-                                  </IconButton>
-                                </>
-                              </TableCell>
-                            </TableRow>
-                          );
-                        })}
-                      </TableBody>
-                    </React.Fragment>
-                  )
-                );
-              })}
-            </Table>
-          </TableContainer>
+                                    {product.productPrice}
+                                  </Typography>
+                                </TableCell>
+                                <TableCell>
+                                  <>
+                                    <IconButton
+                                      onClick={() => {
+                                        openModalHandler(
+                                          product.id,
+                                          productPath
+                                        );
+                                      }}
+                                      size={matches ? "small" : "medium"}
+                                    >
+                                      <EditIcon />
+                                    </IconButton>
+                                    <IconButton
+                                      onClick={() => {
+                                        openDeleteModalHandler(
+                                          product.id,
+                                          product.productName
+                                        );
+                                      }}
+                                      size={matches ? "small" : "medium"}
+                                    >
+                                      <DeleteIcon />
+                                    </IconButton>
+                                  </>
+                                </TableCell>
+                              </TableRow>
+                            );
+                          })}
+                        </TableBody>
+                      </React.Fragment>
+                    )
+                  );
+                })}
+              </Table>
+            </TableContainer>
+            {productLength < 1 && (
+              <Typography
+                variant={matches ? "h6" : "h5"}
+                align="center"
+              >{`No product ${searchQuery} found`}</Typography>
+            )}
+          </React.Fragment>
         )}
       </Container>
       <InputModal
