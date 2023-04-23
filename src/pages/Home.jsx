@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 
 import useHttpRequest from "../hooks/http-hook";
 import { ErrorAlert, ProductList } from "../components";
@@ -29,7 +29,15 @@ const Home = () => {
   return (
     <React.Fragment>
       {!error && isLoading ? (
-        <CircularProgress />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "1rem 0",
+          }}
+        >
+          <CircularProgress color="error" />
+        </Box>
       ) : (
         productList?.map((data) => {
           return (

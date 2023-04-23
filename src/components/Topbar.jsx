@@ -137,7 +137,23 @@ const Topbar = () => {
                   {searchQuery &&
                     !error &&
                     (isLoading ? (
-                      <CircularProgress />
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          padding: "1rem 0",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            padding: "1rem 0",
+                          }}
+                        >
+                          <CircularProgress color="error" />
+                        </Box>
+                      </Box>
                     ) : (
                       <React.Fragment>
                         {productList?.map((data) => {

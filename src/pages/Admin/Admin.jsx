@@ -141,7 +141,15 @@ const Admin = () => {
           />
         </Box>
         {!error && isLoading ? (
-          <CircularProgress />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "1rem 0",
+            }}
+          >
+            <CircularProgress color="error" />
+          </Box>
         ) : (
           <React.Fragment>
             <TableContainer component={Paper} sx={{ mt: 5 }}>

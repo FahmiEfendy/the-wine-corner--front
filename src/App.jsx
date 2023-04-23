@@ -45,7 +45,7 @@ function App() {
     >
       <Topbar />
       <Container maxWidth="xl" sx={{ minHeight: "37.1rem" }}>
-        <Suspense fallback={<CircularProgress />}>
+        <Suspense fallback={<CircularProgress color="error" />}>
           <Routes>
             {userToken ? (
               <Route path="/admin" element={<Admin />} />

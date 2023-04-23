@@ -60,12 +60,20 @@ const ProductDetail = () => {
     <React.Fragment>
       {!error &&
         (isLoading ? (
-          <CircularProgress />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "1rem 0",
+            }}
+          >
+            <CircularProgress color="error" />
+          </Box>
         ) : (
           selectedProduct && (
             <React.Fragment>
               <Grid container style={{ margin: "5rem 0rem" }}>
-                <Grid item xs={5}>
+                <Grid item xs={6}>
                   <img
                     src={`${process.env.REACT_APP_ASSET_URL}/${selectedProduct.productImage}`}
                     alt={selectedProduct.productName}
@@ -77,7 +85,7 @@ const ProductDetail = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={7}>
+                <Grid item xs={6}>
                   <Box style={{ marginTop: !matches && "2.5rem" }}>
                     <Typography
                       variant={matches ? "body2" : "h4"}

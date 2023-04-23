@@ -61,7 +61,15 @@ const ProductList = ({
     <React.Fragment>
       {!error &&
         (isLoading ? (
-          <CircularProgress />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "1rem 0",
+            }}
+          >
+            <CircularProgress color="error" />
+          </Box>
         ) : (
           productList && (
             <Box style={{ marginTop: "2.5rem" }}>

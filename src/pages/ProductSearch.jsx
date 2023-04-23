@@ -53,7 +53,15 @@ const ProductSearch = () => {
         <Grid container spacing={2}>
           {!error &&
             (isLoading ? (
-              <CircularProgress />
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "1rem 0",
+                }}
+              >
+                <CircularProgress color="error" />
+              </Box>
             ) : (
               productList.map((data) => {
                 const productPath = data.productPath;

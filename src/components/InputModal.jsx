@@ -195,7 +195,15 @@ const InputModal = ({ isOpen, closeModalHandler, id = null, path = "" }) => {
         } Product`}</Typography>
         {!error &&
           (isLoading ? (
-            <CircularProgress />
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                padding: "1rem 0",
+              }}
+            >
+              <CircularProgress color="error" />
+            </Box>
           ) : (
             <form
               style={{

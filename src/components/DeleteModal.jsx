@@ -54,7 +54,15 @@ const DeleteModal = ({ isOpen, closeDeleteModalHandler, id, name }) => {
     <Modal open={isOpen} onClose={closeDeleteModalHandler}>
       <Box>
         {isLoading ? (
-          <CircularProgress />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "1rem 0",
+            }}
+          >
+            <CircularProgress color="error" />
+          </Box>
         ) : (
           <Box style={style(matches)}>
             <Typography
