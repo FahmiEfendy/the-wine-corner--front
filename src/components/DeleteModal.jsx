@@ -6,13 +6,14 @@ import {
   CircularProgress,
   Modal,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 
 import ErrorAlert from "./ErrorAlert";
 import useHttpRequest from "../hooks/http-hook";
 import AuthContext from "../context/auth-context";
 
-const style = {
+const style = (matches) => ({
   position: "absolute",
   display: "flex",
   flexDirection: "column",
@@ -21,14 +22,17 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "40rem",
-  height: "10rem",
+  width: matches ? "18rem" : "40rem",
+  height: matches ? "10rem" : "10rem",
   backgroundColor: "white",
   border: "2px solid #AF1515",
-};
+  padding: "1rem",
+});
 
 const DeleteModal = ({ isOpen, closeDeleteModalHandler, id, name }) => {
   const auth = useContext(AuthContext);
+
+  const matches = useMediaQuery("(max-width:768px)");
 
   const { isLoading, error, sendRequest, errorClearHandler } = useHttpRequest();
 
@@ -52,8 +56,11 @@ const DeleteModal = ({ isOpen, closeDeleteModalHandler, id, name }) => {
         {isLoading ? (
           <CircularProgress />
         ) : (
-          <Box style={style}>
-            <Typography variant="h5" sx={{ margin: "2rem 0" }}>
+          <Box style={style(matches)}>
+            <Typography
+              variant={matches ? "body1" : "h5"}
+              sx={{ margin: "2rem 0" }}
+            >
               {`Are you sure want to delete ${name} ?`}
             </Typography>
             <Box sx={{ display: "flex", margin: "0 2rem 0 auto" }}>

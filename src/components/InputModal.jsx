@@ -13,6 +13,7 @@ import {
   Select,
   TextField,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 
 import { ImageUpload } from "./";
@@ -20,7 +21,7 @@ import useHttpHook from "../hooks/http-hook";
 import AuthContext from "../context/auth-context";
 import ErrorAlert from "../components/ErrorAlert";
 
-const style = {
+const style = (matches) => ({
   position: "absolute",
   display: "flex",
   flexDirection: "column",
@@ -29,14 +30,16 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "40rem",
-  height: "50rem",
+  width: matches ? "20rem" : "40rem",
+  height: matches ? "50rem" : "50rem",
   backgroundColor: "white",
   border: "2px solid #AF1515",
-};
+});
 
 const InputModal = ({ isOpen, closeModalHandler, id = null, path = "" }) => {
   const auth = useContext(AuthContext);
+
+  const matches = useMediaQuery("(max-width:768px)");
 
   const [updateFile, setUpdateFile] = useState();
   const [productName, setProductName] = useState("");
@@ -176,7 +179,7 @@ const InputModal = ({ isOpen, closeModalHandler, id = null, path = "" }) => {
 
   return (
     <Modal open={isOpen} onClose={closeModalHandler}>
-      <Box style={style}>
+      <Box style={style(matches)}>
         <IconButton
           sx={{
             marginLeft: "auto",
@@ -187,7 +190,7 @@ const InputModal = ({ isOpen, closeModalHandler, id = null, path = "" }) => {
         >
           <CloseIcon />
         </IconButton>
-        <Typography variant="h4">{`${
+        <Typography variant={`${matches ? "h6" : "h4"}`}>{`${
           id ? "Update" : "Add"
         } Product`}</Typography>
         {!error &&
@@ -203,7 +206,7 @@ const InputModal = ({ isOpen, closeModalHandler, id = null, path = "" }) => {
               onSubmit={submitNewProductHandler}
             >
               <TextField
-                sx={{ width: "30rem", m: "2rem 0" }}
+                sx={{ width: `${matches ? "15rem" : "30rem"}`, m: "2rem 0" }}
                 variant="outlined"
                 label="Product Name"
                 type="text"
@@ -212,7 +215,7 @@ const InputModal = ({ isOpen, closeModalHandler, id = null, path = "" }) => {
                 onChange={(e) => productNameChangeHandler(e)}
               />
               <TextField
-                sx={{ width: "30rem" }}
+                sx={{ width: `${matches ? "15rem" : "30rem"}` }}
                 variant="outlined"
                 label="Product Price"
                 type="number"

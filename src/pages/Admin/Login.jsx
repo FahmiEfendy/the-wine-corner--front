@@ -6,6 +6,7 @@ import {
   Container,
   TextField,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 
 import { ErrorAlert } from "../../components";
@@ -14,6 +15,8 @@ import AuthContext from "../../context/auth-context";
 
 const Login = () => {
   const auth = useContext(AuthContext);
+
+  const matches = useMediaQuery("(max-width:768px)");
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -69,7 +72,7 @@ const Login = () => {
         >
           <Typography variant="h4">Admin Login Page</Typography>
           <TextField
-            sx={{ width: "30rem" }}
+            sx={{ width: `${matches ? "20rem" : "30rem"}` }}
             variant="outlined"
             label="Username"
             type="text"
@@ -78,7 +81,7 @@ const Login = () => {
             onChange={(e) => usernameChangeHandler(e)}
           />
           <TextField
-            sx={{ width: "30rem" }}
+            sx={{ width: `${matches ? "20rem" : "30rem"}` }}
             variant="outlined"
             label="Password"
             type="password"

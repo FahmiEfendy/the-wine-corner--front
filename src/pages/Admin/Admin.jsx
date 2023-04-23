@@ -16,6 +16,7 @@ import {
   TableHead,
   TableRow,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
@@ -32,6 +33,8 @@ const Admin = () => {
   const navigate = useNavigate();
 
   const auth = useContext(AuthContext);
+
+  const matches = useMediaQuery("(max-width:768px)");
 
   const [editId, setEditId] = useState(null);
   const [deleteId, setDeleteId] = useState(null);
@@ -98,30 +101,42 @@ const Admin = () => {
 
   return (
     <React.Fragment>
-      <Container maxWidth="xl">
+      <Container
+        maxWidth="xl"
+        sx={{ display: "flex", flexDirection: "column" }}
+      >
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
             mt: "2rem",
+            alignItems: "center",
           }}
         >
-          <Button variant="contained" size="large" onClick={addProductHandler}>
-            ADD PRODUCT
-          </Button>
-          <SearchBar
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            sx={{ width: "60rem" }}
-          />
           <Button
             variant="contained"
-            size="large"
+            size={matches ? "small" : "large"}
+            onClick={addProductHandler}
+          >
+            ADD PRODUCT
+          </Button>
+          <Button
+            variant="contained"
+            size={matches ? "small" : "large"}
             sx={{ backgroundColor: "#AF1515" }}
             onClick={logoutHandler}
           >
             LOGOUT
           </Button>
+        </Box>
+        <Box sx={{ m: "1rem auto 0 auto" }}>
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            sx={{
+              width: `${matches ? "19rem" : "87.5rem"}`,
+            }}
+          />
         </Box>
         {!error && isLoading ? (
           <CircularProgress />
@@ -136,7 +151,7 @@ const Admin = () => {
                       <TableHead>
                         <TableRow>
                           <TableCell colSpan={4} align="center" size="big">
-                            <Typography variant="h4">
+                            <Typography variant={`${matches ? "h5" : "h4"}`}>
                               {product.productType}
                             </Typography>
                           </TableCell>
@@ -145,16 +160,24 @@ const Admin = () => {
                       <TableHead>
                         <TableRow>
                           <TableCell>
-                            <Typography variant="h5">Product Image</Typography>
+                            <Typography variant={`${matches ? "body2" : "h5"}`}>
+                              Product Image
+                            </Typography>
                           </TableCell>
                           <TableCell>
-                            <Typography variant="h5">Product Name</Typography>
+                            <Typography variant={`${matches ? "body2" : "h5"}`}>
+                              Product Name
+                            </Typography>
                           </TableCell>
                           <TableCell>
-                            <Typography variant="h5">Product Price</Typography>
+                            <Typography variant={`${matches ? "body2" : "h5"}`}>
+                              Product Price
+                            </Typography>
                           </TableCell>
                           <TableCell>
-                            <Typography variant="h5">Action</Typography>
+                            <Typography variant={`${matches ? "body2" : "h5"}`}>
+                              Action
+                            </Typography>
                           </TableCell>
                         </TableRow>
                       </TableHead>
@@ -162,11 +185,17 @@ const Admin = () => {
                         {product.products.map((product) => {
                           return (
                             <TableRow key={product.id}>
-                              <TableCell style={{ maxWidth: "10rem" }}>
+                              <TableCell
+                                style={{
+                                  maxWidth: "10rem",
+                                }}
+                              >
                                 <img
                                   src={`${process.env.REACT_APP_ASSET_URL}/${product.productImage}`}
                                   alt={product.productName}
-                                  style={{ width: "30%" }}
+                                  style={{
+                                    width: `${matches ? "100%" : "30%"}`,
+                                  }}
                                 />
                               </TableCell>
                               <TableCell
@@ -174,12 +203,16 @@ const Admin = () => {
                                   productDetailHandler(product.id, productPath);
                                 }}
                               >
-                                <Typography variant="h6">
+                                <Typography
+                                  variant={`${matches ? "body2" : "h6"}`}
+                                >
                                   {product.productName}
                                 </Typography>
                               </TableCell>
                               <TableCell>
-                                <Typography variant="h6">
+                                <Typography
+                                  variant={`${matches ? "body2" : "h6"}`}
+                                >
                                   {product.productPrice}
                                 </Typography>
                               </TableCell>
@@ -189,6 +222,7 @@ const Admin = () => {
                                     onClick={() => {
                                       openModalHandler(product.id, productPath);
                                     }}
+                                    size={matches ? "small" : "medium"}
                                   >
                                     <EditIcon />
                                   </IconButton>
@@ -199,6 +233,7 @@ const Admin = () => {
                                         product.productName
                                       );
                                     }}
+                                    size={matches ? "small" : "medium"}
                                   >
                                     <DeleteIcon />
                                   </IconButton>
