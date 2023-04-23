@@ -9,6 +9,7 @@ import {
   Divider,
   IconButton,
   Paper,
+  Typography,
   useMediaQuery,
 } from "@mui/material";
 
@@ -21,6 +22,7 @@ const Topbar = () => {
   const [productList, setProductList] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [productLength, setProductLength] = useState(null);
 
   const matches = useMediaQuery("(max-width:768px)");
 
@@ -42,6 +44,7 @@ const Topbar = () => {
         );
 
         setProductList(responseData.data);
+        setProductLength(responseData.length);
       } catch (err) {
         console.log(err.message);
       }
@@ -136,23 +139,34 @@ const Topbar = () => {
                     (isLoading ? (
                       <CircularProgress />
                     ) : (
-                      productList?.map((data) => {
-                        const productPath = data.productPath;
-                        return data?.products.map((product) => {
-                          return (
-                            <Fragment key={product.id}>
-                              <ProductBar
-                                productId={product.id}
-                                productImage={`${process.env.REACT_APP_ASSET_URL}/${product.productImage}`}
-                                productName={product.productName}
-                                productPath={productPath}
-                                productPrice={product.productPrice}
-                              />
-                              <Divider />
-                            </Fragment>
-                          );
-                        });
-                      })
+                      <React.Fragment>
+                        {productList?.map((data) => {
+                          const productPath = data.productPath;
+                          return data?.products.map((product) => {
+                            return (
+                              <Fragment key={product.id}>
+                                <ProductBar
+                                  productId={product.id}
+                                  productImage={`${process.env.REACT_APP_ASSET_URL}/${product.productImage}`}
+                                  productName={product.productName}
+                                  productPath={productPath}
+                                  productPrice={product.productPrice}
+                                />
+                                <Divider />
+                              </Fragment>
+                            );
+                          });
+                        })}
+                        {productLength < 1 && (
+                          <Typography
+                            align="center"
+                            sx={{
+                              margin: `${matches ? ".5rem" : "1rem"}`,
+                              fontSize: `${matches ? "12px" : "18px"}`,
+                            }}
+                          >{`No product ${searchQuery} found`}</Typography>
+                        )}
+                      </React.Fragment>
                     ))}
                 </Paper>
               </Box>
