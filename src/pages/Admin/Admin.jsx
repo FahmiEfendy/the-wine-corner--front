@@ -22,6 +22,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import useHttpRequest from "../../hooks/http-hook";
 import AuthContext from "../../context/auth-context";
+import { formatProductName } from "../../utils/Formatter";
 import {
   DeleteModal,
   ErrorAlert,
@@ -173,6 +174,7 @@ const Admin = () => {
                             <TableCell>
                               <Typography
                                 variant={`${matches ? "body2" : "h5"}`}
+                                align="center"
                               >
                                 Product Image
                               </Typography>
@@ -180,6 +182,7 @@ const Admin = () => {
                             <TableCell>
                               <Typography
                                 variant={`${matches ? "body2" : "h5"}`}
+                                align="center"
                               >
                                 Product Name
                               </Typography>
@@ -187,6 +190,7 @@ const Admin = () => {
                             <TableCell>
                               <Typography
                                 variant={`${matches ? "body2" : "h5"}`}
+                                align="center"
                               >
                                 Product Price
                               </Typography>
@@ -194,6 +198,7 @@ const Admin = () => {
                             <TableCell>
                               <Typography
                                 variant={`${matches ? "body2" : "h5"}`}
+                                align="center"
                               >
                                 Action
                               </Typography>
@@ -206,14 +211,17 @@ const Admin = () => {
                               <TableRow key={product.id}>
                                 <TableCell
                                   style={{
-                                    maxWidth: "10rem",
+                                    display: "flex",
+                                    alignItems: "center",
                                   }}
                                 >
                                   <img
                                     src={`${process.env.REACT_APP_ASSET_URL}/${product.productImage}`}
                                     alt={product.productName}
                                     style={{
-                                      width: `${matches ? "100%" : "30%"}`,
+                                      height: `${matches ? "5rem" : "8rem"}`,
+                                      margin: "0 auto",
+                                      objectFit: "contain",
                                     }}
                                   />
                                 </TableCell>
@@ -224,11 +232,17 @@ const Admin = () => {
                                       productPath
                                     );
                                   }}
+                                  sx={{ maxWidth: "18rem" }}
                                 >
                                   <Typography
                                     variant={`${matches ? "body2" : "h6"}`}
                                   >
-                                    {product.productName}
+                                    {matches
+                                      ? formatProductName(
+                                          product.productName,
+                                          30
+                                        )
+                                      : product.productName}
                                   </Typography>
                                 </TableCell>
                                 <TableCell>

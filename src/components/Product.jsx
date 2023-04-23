@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import { Box, Button, Paper, Typography, useMediaQuery } from "@mui/material";
 
+import { formatProductName } from "../utils/Formatter";
+
 const Product = ({
   productId,
   productImage,
@@ -11,12 +13,6 @@ const Product = ({
   productPath,
 }) => {
   const matches = useMediaQuery("(max-width:768px)");
-
-  const formatProductName = (text) => {
-    const maxLength = 80;
-
-    return text.slice(0, maxLength) + (text.length > maxLength ? "..." : "");
-  };
 
   return (
     <Link
@@ -54,7 +50,7 @@ const Product = ({
           }}
         >
           <Typography style={{ fontSize: matches ? "12px" : "16px" }}>
-            {formatProductName(productName)}
+            {formatProductName(productName, 80)}
           </Typography>
         </Box>
         <Typography
