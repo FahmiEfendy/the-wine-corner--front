@@ -14,6 +14,19 @@ import {
 import useHttpRequest from "../hooks/http-hook";
 import { ErrorAlert, ProductList } from "../components";
 
+const style = (matches) => ({
+  border: "1px solid #AF1515",
+  color: "#AF1515",
+  height: matches ? "1.5rem" : "3rem",
+  margin: matches ? ".5rem 0 0 0" : "0 auto 0 2rem",
+  fontSize: matches && "10px",
+  textTransform: "none",
+  "&:hover": {
+    color: "#D93434",
+    border: "1px solid #D93434",
+  },
+});
+
 const ProductDetail = () => {
   const { productId, productPath } = useParams();
 
@@ -31,6 +44,10 @@ const ProductDetail = () => {
 
   const blibliHandler = () => {
     window.open("https://www.blibli.com/merchant/the-wine-corner/THW-70022");
+  };
+
+  const topedHandler = () => {
+    window.open("https://www.tokopedia.com/thewinecornerid");
   };
 
   const whatsAppHandler = () => {
@@ -141,28 +158,33 @@ const ProductDetail = () => {
                             style={{
                               width: "20px",
                               height: "20px",
-                              marginBottom: "4px",
+                              marginLeft: ".3rem",
                             }}
                             src={require("../assets/logo-blibli.png")}
                             alt="Blibli Logo"
                           />
                         }
-                        sx={{
-                          border: "1px solid #AF1515",
-                          color: "#AF1515",
-                          height: matches ? "1.5rem" : "3rem",
-                          padding: "0 1rem",
-                          margin: matches ? ".5rem 0 2rem 0" : "0 auto 0 2rem",
-                          fontSize: matches && "10px",
-                          textTransform: "none",
-                          "&:hover": {
-                            color: "#D93434",
-                            border: "1px solid #D93434",
-                          },
-                        }}
+                        sx={style(matches)}
                         onClick={blibliHandler}
                       >
                         Official Store via Blibli
+                      </Button>
+                      <Button
+                        startIcon={
+                          <img
+                            style={{
+                              width: "13px",
+                              height: "17px",
+                              margin: "0 .1rem 0 .7rem",
+                            }}
+                            src={require("../assets/logo-tokopedia.png")}
+                            alt="Tokopedia Logo"
+                          />
+                        }
+                        sx={style(matches)}
+                        onClick={topedHandler}
+                      >
+                        Official Store via Tokopedia
                       </Button>
                     </Box>
                   </Box>
