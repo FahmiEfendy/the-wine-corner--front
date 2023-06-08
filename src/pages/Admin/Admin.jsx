@@ -159,7 +159,7 @@ const Admin = () => {
                   const productPath = product.productPath;
                   return (
                     product.products.length > 0 && (
-                      <React.Fragment key={product.id}>
+                      <React.Fragment key={product.__id}>
                         <TableHead>
                           <TableRow>
                             <TableCell colSpan={4} align="center" size="big">
@@ -208,7 +208,7 @@ const Admin = () => {
                         <TableBody>
                           {product.products.map((product) => {
                             return (
-                              <TableRow key={product.id}>
+                              <TableRow key={product.productId}>
                                 <TableCell
                                   style={{
                                     display: "flex",
@@ -257,7 +257,7 @@ const Admin = () => {
                                     <IconButton
                                       onClick={() => {
                                         openModalHandler(
-                                          product.id,
+                                          product.productId,
                                           productPath
                                         );
                                       }}
@@ -268,7 +268,7 @@ const Admin = () => {
                                     <IconButton
                                       onClick={() => {
                                         openDeleteModalHandler(
-                                          product.id,
+                                          product.productId,
                                           product.productName
                                         );
                                       }}

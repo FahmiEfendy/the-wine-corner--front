@@ -42,7 +42,7 @@ const Home = () => {
         productList?.map((data) => {
           return (
             <ProductList
-              key={data.id}
+              key={data.__id}
               productType={data.productType}
               productPath={data.productPath}
               fourItem={data.products.length >= 4 && true}

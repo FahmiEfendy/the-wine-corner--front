@@ -54,7 +54,7 @@ const ProductDetail = () => {
     const phoneNumber = 628991890269;
 
     window.open(
-      `https://wa.me/${phoneNumber}?text=Hello,%20apakah%20${selectedProduct.productName}%20ready?`
+      `https://wa.me/${phoneNumber}?text=Hello,%20apakah%20${selectedProduct[0].productName}%20ready?`
     );
   };
 
@@ -92,8 +92,8 @@ const ProductDetail = () => {
               <Grid container style={{ margin: "5rem 0rem" }}>
                 <Grid item xs={6}>
                   <img
-                    src={`${process.env.REACT_APP_ASSET_URL}/${selectedProduct.productImage}`}
-                    alt={selectedProduct.productName}
+                    src={`${process.env.REACT_APP_ASSET_URL}/${selectedProduct[0].productImage}`}
+                    alt={selectedProduct[0].productName}
                     style={{
                       objectFit: "contain",
                       height: matches ? "150px" : "500px",
@@ -108,7 +108,7 @@ const ProductDetail = () => {
                       variant={matches ? "body2" : "h4"}
                       fontWeight={700}
                     >
-                      {selectedProduct.productName}
+                      {selectedProduct[0].productName}
                     </Typography>
                     <Box
                       sx={{
@@ -125,7 +125,7 @@ const ProductDetail = () => {
                           }
                         }
                       >
-                        {selectedProduct.productPrice}
+                        {selectedProduct[0].productPrice}
                       </Typography>
                       <Typography variant="h4" style={{ marginLeft: "1rem" }}>
                         {discountedProductPrice}
@@ -191,7 +191,7 @@ const ProductDetail = () => {
                 </Grid>
               </Grid>
               <ProductList
-                productId={selectedProduct.id}
+                productId={productId}
                 productType={productType}
                 productPath={`/${productPath}`}
                 fourItem={true}

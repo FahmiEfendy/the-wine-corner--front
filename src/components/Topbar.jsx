@@ -20,6 +20,7 @@ const Topbar = () => {
   const location = useLocation();
 
   const [productList, setProductList] = useState([]);
+  const [navbarList, setNavbarList] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [productLength, setProductLength] = useState(null);
@@ -52,6 +53,22 @@ const Topbar = () => {
 
     fetchRequest();
   }, [searchQuery, sendRequest]);
+
+  useEffect(() => {
+    const fetchRequest = async () => {
+      try {
+        const responseData = await sendRequest(
+          `${process.env.REACT_APP_BACKEND_URL}/product`
+        );
+
+        setNavbarList(responseData.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+
+    fetchRequest();
+  }, [sendRequest]);
 
   useEffect(() => {
     setSearchQuery("");
@@ -160,9 +177,9 @@ const Topbar = () => {
                           const productPath = data.productPath;
                           return data?.products.map((product) => {
                             return (
-                              <Fragment key={product.id}>
+                              <Fragment key={product.productId}>
                                 <ProductBar
-                                  productId={product.id}
+                                  productId={product.productId}
                                   productImage={`${process.env.REACT_APP_ASSET_URL}/${product.productImage}`}
                                   productName={product.productName}
                                   productPath={productPath}
@@ -180,7 +197,7 @@ const Topbar = () => {
                               margin: `${matches ? ".5rem" : "1rem"}`,
                               fontSize: `${matches ? "12px" : "18px"}`,
                             }}
-                          >{`No product ${searchQuery} found`}</Typography>
+                          >{`No product '${searchQuery}' found`}</Typography>
                         )}
                       </React.Fragment>
                     ))}
@@ -194,7 +211,7 @@ const Topbar = () => {
                   marginLeft: !matches && "3rem",
                 }}
               >
-                {productList.map((data, index) => {
+                {navbarList.map((data, index) => {
                   return (
                     <React.Fragment key={index}>
                       <NavLink

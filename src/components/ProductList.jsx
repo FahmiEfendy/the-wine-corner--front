@@ -126,9 +126,9 @@ const ProductList = ({
               <Grid container spacing={2}>
                 {productList.map((data) => {
                   return (
-                    <Grid key={data.id} item md={3} xs={6}>
+                    <Grid key={data.productId} item md={3} xs={6}>
                       <Product
-                        productId={data.id}
+                        productId={data.productId}
                         productImage={data.productImage}
                         productName={data.productName}
                         productPrice={data.productPrice}

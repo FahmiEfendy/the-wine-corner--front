@@ -80,7 +80,7 @@ const InputModal = ({ isOpen, closeModalHandler, id = null, path = "" }) => {
             .replace(",00", "")
             .replace(/\s/g, "")
         );
-        formData.append("productCategory", productCategory);
+        formData.append("productCategoryId", productCategory);
         formData.append("productImage", productImage);
 
         await sendRequest(
@@ -111,7 +111,7 @@ const InputModal = ({ isOpen, closeModalHandler, id = null, path = "" }) => {
           .replace(",00", "")
           .replace(/\s/g, "")
       );
-      formData.append("productCategory", productCategory);
+      formData.append("productCategoryId", productCategory);
       formData.append("productImage", productImage);
 
       await sendRequest(
@@ -159,15 +159,17 @@ const InputModal = ({ isOpen, closeModalHandler, id = null, path = "" }) => {
 
       try {
         const responseData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}${path}/${id}`
+          `${process.env.REACT_APP_BACKEND_URL}/${path}/${id}`
         );
 
-        setProductName(responseData.data.productName);
-        setProductPrice(responseData.data.productPrice.replace(/[^\d]/g, ""));
-        setProductCategory(responseData.data.productCategory);
-        setProductImage(responseData.data.productImage);
+        setProductName(responseData.data[0].productName);
+        setProductPrice(
+          responseData.data[0].productPrice.replace(/[^\d]/g, "")
+        );
+        setProductCategory(responseData.data[0].productCategoryId);
+        setProductImage(responseData.data[0].productImage);
         setUpdateFile(
-          `${process.env.REACT_APP_ASSET_URL}/${responseData.data.productImage}`
+          `${process.env.REACT_APP_ASSET_URL}/${responseData.data[0].productImage}`
         );
       } catch (err) {
         console.log(err.message);
@@ -242,11 +244,13 @@ const InputModal = ({ isOpen, closeModalHandler, id = null, path = "" }) => {
                   }}
                 >
                   {productList &&
-                    productList.map((product) => (
-                      <MenuItem value={product.id} key={product.id}>
-                        {product.productType}
-                      </MenuItem>
-                    ))}
+                    productList.map((product) => {
+                      return (
+                        <MenuItem value={product.__id} key={product.__id}>
+                          {product.productType}
+                        </MenuItem>
+                      );
+                    })}
                 </Select>
               </FormControl>
               <ImageUpload
