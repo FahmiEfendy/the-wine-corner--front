@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# 🍷 The Wine Corner – Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img width="762" height="384" alt="Screenshot" src="https://github.com/user-attachments/assets/e936d4e3-8cc3-49ea-9444-2c6f9b9449fd" />
+</p>
 
-## Available Scripts
+Frontend application for The Wine Corner, an e-commerce style web app that displays wine products, product details, and recommendations. 
 
-In the project directory, you can run:
+Built with React and Material UI, this app consumes RESTful APIs provided by the backend service.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Product listing page
+- Product detail view
+- Product recommendation section
+- Responsive UI with Material UI
+- Client-side routing
+- Environment-based API configuration
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🌐 Live API
+Base URL: https://thewinecorner.web.id/
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Language: JavaScript
+- Framework: React 18 (Create React App)
+- UI Library: Material UI (MUI v4 & v5)
+- Styling: Emotion (@emotion/react, @emotion/styled)
+- Routing: React Router DOM v6
+- State & Logic: React Hooks
+- Environment Config: dotenv
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## 🚀 How to Run
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Requirements
+- Node.js (v16+ recommended)
+- yarn
+- Backend API running (local or production)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Steps
+```bash
+git clone https://github.com/FahmiEfendy/the-wine-corner--front.git # clone the repository
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+cd the-wine-corner--front # access cloned repository
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+yarn install # install dependency
 
-## Learn More
+yarn start # start application
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+After running the command, the app will be available at: http://localhost:3000
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## ⚙️ Environment Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Create a .env file in the root directory
+- Check .env.example for required environment keys
+- Make sure this URL points to the correct backend (local or production).
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🔗 Backend Integration
 
-### Making a Progressive Web App
+- This frontend consumes APIs from The Wine Corner Backend, including:
+- Product listing
+- Product detail
+- Product recommendations
+- Ensure the backend service is running before using the frontend.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📬 Contact
+- Email: itsfahmiefendy@gmail.com
+- LinkedIn: https://www.linkedin.com/in/fahmi-efendy
